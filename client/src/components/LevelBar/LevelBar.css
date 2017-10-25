@@ -1,0 +1,35 @@
+
+.levelDiv {
+	width: 150px;
+	margin: 0 0 30px 15px;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+}
+
+.levelHeader {
+	font-family: 'Wendy One', sans-serif;
+	text-align: center;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.levelText {
+	font-family: 'Arial', sans-serif;
+	text-align: center;
+	font-size: 20px;
+}
+
+.progress {
+	width: 100%;
+	height: 25px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.42);
+	border: 1px solid black;
+    margin: auto;
+    background-color: #12172a;
+}
+
+.progress .determinate {
+	background-color: #838ca6;
+}

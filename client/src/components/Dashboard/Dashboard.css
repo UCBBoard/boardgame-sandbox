@@ -1,0 +1,93 @@
+.dashContainer {
+  margin-top: 45px;
+  width: 75% !important;
+}
+
+.dashRow {
+/*  background: #cfcfcf;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.4);*/
+/*  border-radius: 10px;
+  padding: 0 5px;*/
+  margin: 75px 0;
+}
+
+.list-overflow-container {
+  max-height: 545px;
+  border: 1px #DDDDDD solid;
+  border-radius: 4px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.list-overflow-container ul {
+  margin: 0;
+}
+
+.list-overflow-container li {
+  border-radius: 0px;
+  border-left: none;
+  border-right: none;
+}
+
+.list-overflow-container li * {
+  cursor: pointer;
+}
+
+.list-overflow-container li a {
+  color: #2A878C;
+}
+
+.list-overflow-container li:first-child {
+  border-top: none;
+}
+
+.list-overflow-container li:last-child {
+  border-bottom: none;
+}
+
+.logoH1Dash {
+    font-family: 'Wendy One', sans-serif;
+    text-decoration: none;
+    padding: 0;
+    margin: -15px 0 0;
+    font-size: 80px;
+    text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.56);
+    display: inline-block;
+}
+
+.siteLogoDash {
+    width: 100px;
+    margin-top: 40px;
+    vertical-align: bottom;
+}
+
+.loggedIn{
+  font-family: 'Wendy One', sans-serif;
+  width:150px;
+  height:80px;
+  float:right;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+@media screen and (max-width: 600px){
+  .logoH1Dash {
+    font-size: 60px;
+  }
+  
+  .mainContainer{
+    width:80%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .logoH1Dash {
+    font-size: 40px;
+  }
+
+  .siteLogoDash {
+    display: block;
+    margin: 10px auto;
+  }
+}

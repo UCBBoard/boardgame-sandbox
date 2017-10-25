@@ -1,0 +1,25 @@
+.collapsible-header {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.collapseP {
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.list-item-name {
+  /*float: left;*/
+  font-size: 15px;
+  /*display: block;*/
+}
+
+.material-icons {
+  /*float: left;*/
+}
+/*.game-list-icon {
+  float: right;
+  margin-top: 15px;
+}*/
+
+.row {
+  margin-bottom: 0px;
+}
