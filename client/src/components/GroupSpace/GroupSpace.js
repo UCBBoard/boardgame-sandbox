@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import "./GroupSpace.css";
+import XScrollGallery from "../XScrollGallery";
 import {Button, Modal, Input} from "react-materialize";
 
 class GroupSpace extends Component {
@@ -42,6 +43,7 @@ class GroupSpace extends Component {
       <div className="col s12 center grouplistBox">
         <div className="groupspaceHeader">
           <h2 className="grouplistHeader">Groups</h2>
+          <XScrollGallery {...this.props}/>
 
           <Modal
             header="Create a group"

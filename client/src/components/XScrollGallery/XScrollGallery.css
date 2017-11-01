@@ -1,0 +1,15 @@
+/*.horizontal-scroll-gallery {
+  width: 175px;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-175px);
+  transform-origin: right top;
+}*/
+
+/*.horizontal-scroll-wrapper > div {
+  width: 100px;
+  height: 100px;
+  transform: rotate(90deg);
+  transform-origin: right top;
+}*/
