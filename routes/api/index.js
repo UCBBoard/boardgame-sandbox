@@ -383,21 +383,40 @@ router.post("/user/:uid/:userName/:userMail", (req, res) => {
 					email: req.params.userMail,
 					cardNum: Math.floor(Math.random() * 9),
 				})
-			User.findOne({_id: req.params.uid}, function(error, resultUser){
-				if (!resultUser){
-					user.save((error, result) => {
-						if(!error) {
-							return res.json(result);
+		//New Version refactored to allow for population of whatever we want in App.js
+			User.findOne({_id:req.params.uid})
+					// .populate('games')
+					// .populate('wishlist')
+					.populate('groups')
+					.exec((error, resultUser) => {
+						if (!resultUser) {
+							user.save((err, result) => {
+								if(!err) {
+									return res.json(result);
+								} else {
+									return console.log(error);
+								}
+							})
 						} else {
-							return console.log(error);
-						};
-					});
-				}
+							res.json(resultUser);
+						}
+					})
+		//Old Version Still works
+			// User.findOne({_id: req.params.uid}, function(error, resultUser){
+			// 	if (!resultUser){
+			// 		user.save((error, result) => {
+			// 			if(!error) {
+			// 				return res.json(result);
+			// 			} else {
+			// 				return console.log(error);
+			// 			};
+			// 		});
+			// 	}
 
-				else {
-					res.json(resultUser);
-				}
-			})
+			// 	else {
+			// 		res.json(resultUser);
+			// 	}
+			// })
 	});
 
 module.exports = router;
