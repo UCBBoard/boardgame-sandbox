@@ -6,7 +6,10 @@ import InfoTile from "../InfoTile";
 const XScrollGallery = props =>
   <div className="horizontal-scroll-gallery">
     {props.groups.map((group, i) => {
-      return <InfoTile/>
+      return <InfoTile
+        key={group._id}
+        info={props.groups[i]}
+      />
       })
     }
   </div>

@@ -1,9 +1,12 @@
 import React from "react";
+import "./InfoTile.css";
 
 const InfoTile = props =>
 
-  <div>
-    InfoTile
+  <div className="infotile-frame">
+    Title: {props.info.name}
+    Description: {props.info.description}
+    Location: {props.info.location}
   </div>
 
 export default InfoTile;
