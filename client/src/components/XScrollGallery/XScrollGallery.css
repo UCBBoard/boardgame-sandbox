@@ -1,15 +1,14 @@
-/*.horizontal-scroll-gallery {
-  width: 175px;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transform: rotate(-90deg) translateY(-175px);
-  transform-origin: right top;
-}*/
+.horizontal-scroll-gallery {
+  background-color: #838ca6;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  max-height: 163px;
+  min-width: 0px;
+  white-space: nowrap;
+  border-radius: 5px;
+  box-shadow: 5px 4px 3px 3px #6e768b inset
+}
 
-/*.horizontal-scroll-wrapper > div {
-  width: 100px;
-  height: 100px;
-  transform: rotate(90deg);
-  transform-origin: right top;
-}*/
+.scroll-gallery-row {
+  background-color: red;
+}

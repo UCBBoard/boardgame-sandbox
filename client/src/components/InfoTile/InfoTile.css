@@ -1,6 +1,8 @@
-/*.infotile-frame {
-  width: 100px;
-  height: 100px;
-  transform: rotate(90deg);
-  transform-origin: right top;
-}*/
+.infotile-frame {
+  width: 125px;
+  height: 125px;
+  margin: 12.5px;
+  background-color: #515664;
+  display: inline-block;
+  white-space: normal;
+}
