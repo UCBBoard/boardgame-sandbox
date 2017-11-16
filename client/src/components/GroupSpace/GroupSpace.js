@@ -19,7 +19,8 @@ class GroupSpace extends Component {
       creatorID: uID,
       groupName: this.state.groupName,
       groupDesc: this.state.groupDesc,
-      groupLoc: this.state.groupLoc
+      groupLoc: this.state.groupLoc,
+      groupGames: this.props.games
     }).then(response => {
       console.log(response);
     }).catch(error => {

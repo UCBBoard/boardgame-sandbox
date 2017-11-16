@@ -102,6 +102,7 @@ class Dashboard extends Component {
 								<GroupSpace
 									uID={this.props.uID}
 									groups={this.props.groups}
+									games={this.props.games}
 								/>
 							</div>
 

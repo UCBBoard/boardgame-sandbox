@@ -46,7 +46,8 @@ class App extends Component {
 							exp: response.data.exp,
 							toNextLevel: response.data.toNextLevel,
 							cardNum: response.data.cardNum,
-							groups: response.data.groups
+							groups: response.data.groups,
+							games: response.data.games
 							});
 		    			console.log("searching database for user:");
 		    			console.log(response);
@@ -88,6 +89,7 @@ class App extends Component {
 					increaseExp = {this.increaseExp}
 					updateLvl = {this.updateLvl}
 					groups = {this.state.groups}
+					games = {this.state.games}
 					/> : <Splash/>}
 				</div>
 			</BrowserRouter>
