@@ -337,10 +337,10 @@ router.post("/groups/newgroup", (req, res) => {
 							}
 						};
 					let options = {upsert: true, new: true};
-					Group.findOneAndUpdate(conditions, update, options, (err, response) => {
-						console.log(response);
-						User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
-							.exec(response => res.json(response))
+					Group.findOneAndUpdate(conditions, update, options, (err, responseGroup) => {
+						console.log(responseGroup);
+						User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: responseGroup._id}})
+							.exec(response => res.json(responseGroup))
 							.catch(error => console.log(error))
 					})
 					// Group.findOneAndUpdate(conditions, update, options)

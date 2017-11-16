@@ -22,7 +22,7 @@ class GroupSpace extends Component {
       groupLoc: this.state.groupLoc,
       groupGames: this.props.games
     }).then(response => {
-      console.log(response);
+      console.log(response.data);
     }).catch(error => {
       console.log(error);
     })
