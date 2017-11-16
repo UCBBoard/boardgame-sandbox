@@ -1,6 +1,6 @@
 import React from "react";
 import "./InfoTile.css";
-import {Col} from "react-materialize";
+// import {Col} from "react-materialize";
 
 
 const InfoTile = props =>

@@ -14,23 +14,23 @@ class Friendslist extends Component {
 		query: ''
 	}
 
-	showMyFriends = () => {
-		let activeUser = this.props.uID;
-		console.log("finding my friends");
-		console.log("finding friends of " + this.props.uID);
-		Axios.get(`api/user/${activeUser}/friends`)
-			.then(res => {
-				console.log(res.data);
-				this.setState({friends: res.data.friends, friendsView: 'mine'})
-			}).catch(function(error) {
-				console.log("error in showMyFriends");
-				console.error(error)
-			})
-	}
+	// showMyFriends = () => {
+	// 	let activeUser = this.props.uID;
+	// 	console.log("finding my friends");
+	// 	console.log("finding friends of " + this.props.uID);
+	// 	Axios.get(`api/user/${activeUser}/friends`)
+	// 		.then(res => {
+	// 			console.log(res.data);
+	// 			this.setState({friends: res.data.friends, friendsView: 'mine'})
+	// 		}).catch(function(error) {
+	// 			console.log("error in showMyFriends");
+	// 			console.error(error)
+	// 		})
+	// }
 
-	componentDidMount() {
-		this.showMyFriends();
-	}
+	// componentDidMount() {
+	// 	this.showMyFriends();
+	// }
 
 	findAFriend = (event) => {
 		event.preventDefault();

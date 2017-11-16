@@ -6,7 +6,7 @@ const Group = require("../../models/Groups.js");
 const request = require("request");
 const cheerio = require("cheerio");
 const Nightmare = require("nightmare");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose").set('debug', true);
 const axios = require("axios");
 var parseString = require('xml2js').parseString;
 const levelHelper = require("../helper/levelHelper.js")
@@ -166,19 +166,9 @@ router.post("/newgame/:gameid/:uid/:owned", (req, res) => {
 						});
 						}
 					})
-					
 			})
 		})
 })
-
-// // Route for deleting a game
-// router.post("/exp/:uid/:expToAdd", (req, res) => {
-// 	// if(res  null) {
-// 		User.findOne({ _id : req.params.uid}).update({exp: req.params.expToAdd}).exec((error, result) => {
-// 			res.json("");
-// 		})
-// 	// }
-// })
 
 router.delete("/games/deletegame/:uid/:game/:owned", (req, res) => {
 	let userID = req.params.uid;
@@ -198,18 +188,6 @@ router.delete("/games/deletegame/:uid/:game/:owned", (req, res) => {
 		}
 	})
 })
-
-	// //Add the game to the Users mygameslist.
-	// User.findOneAndUpdate({ _id : userID }, {$push:  {mygameslist : gameName}}).exec((error, result) => {
-	// 	console.log(error);
-	// 	Game.findOneAndUpdate({ title : gameName }, {$push: { users : userID}}).exec((error, result) => {
-	// 		console.log(error);
-	// 		res.json(result);
-	// 	})
-	// })
-
-
-	//Add the user to the games user thing. Depending on which we want to use.
 
 
 //Route for adding a user as a friend
@@ -349,20 +327,29 @@ router.post("/groups/newgroup", (req, res) => {
 			if(!groupCheck){
 				//if group doesn't exist, create it
 					let conditions = {name: req.body.groupName};
-					let update = {$set:	{
-							name: req.body.groupName,
-							description: req.body.groupDesc,
-							location: req.body.groupLoc,
-							creator: req.body.creatorID,
-							$push: {members: req.body.creatorID}
-						}};
+					let update = {
+							$set:	{name: req.body.groupName,
+								description: req.body.groupDesc,
+								location: req.body.groupLoc,
+								creator: req.body.creatorID,
+								games: req.body.groupGames},
+							$push: {members: req.body.creatorID,
+							}
+						};
 					let options = {upsert: true, new: true};
-					Group.findOneAndUpdate(conditions, update, options, (err, response) => {
-						console.log(response._id);
-						User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
-							.exec(response => res.json(response))
+					Group.findOneAndUpdate(conditions, update, options, (err, responseGroup) => {
+						console.log(responseGroup);
+						User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: responseGroup._id}})
+							.exec(response => res.json(responseGroup))
 							.catch(error => console.log(error))
 					})
+					// Group.findOneAndUpdate(conditions, update, options)
+					// 	.exec((err, response) => {
+					// 	console.log(response);
+					// 	User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
+					// 		.exec(response => res.json(response))
+					// 		.catch(error => console.log(error))
+					// })
 			} else {
 				//if group does exist, return warning:
 				return console.log("group name is already in use!");
@@ -372,6 +359,11 @@ router.post("/groups/newgroup", (req, res) => {
 			return console.log(error);
 		}
 	})
+})
+
+//Route for joining a group and comparing games
+router.post("/groups/joingroup", (req, res) => {
+	console.log(req.body);
 })
 
 // Route for checking user status and getting mongoUID.
@@ -388,6 +380,7 @@ router.post("/user/:uid/:userName/:userMail", (req, res) => {
 					// .populate('games')
 					// .populate('wishlist')
 					.populate('groups')
+					.populate('friends')
 					.exec((error, resultUser) => {
 						if (!resultUser) {
 							user.save((err, result) => {
@@ -401,22 +394,6 @@ router.post("/user/:uid/:userName/:userMail", (req, res) => {
 							res.json(resultUser);
 						}
 					})
-		//Old Version Still works
-			// User.findOne({_id: req.params.uid}, function(error, resultUser){
-			// 	if (!resultUser){
-			// 		user.save((error, result) => {
-			// 			if(!error) {
-			// 				return res.json(result);
-			// 			} else {
-			// 				return console.log(error);
-			// 			};
-			// 		});
-			// 	}
-
-			// 	else {
-			// 		res.json(resultUser);
-			// 	}
-			// })
 	});
 
 module.exports = router;

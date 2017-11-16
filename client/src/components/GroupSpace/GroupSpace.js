@@ -9,7 +9,12 @@ class GroupSpace extends Component {
   state = {
     groupName : "",
     groupDesc: "",
-    groupLoc: ""
+    groupLoc: "",
+    groups: []
+  }
+
+  componentDidMount () {
+    this.setState({groups: this.props.groups})
   }
 
   addAndJoinGroup = (event) => {
@@ -19,9 +24,14 @@ class GroupSpace extends Component {
       creatorID: uID,
       groupName: this.state.groupName,
       groupDesc: this.state.groupDesc,
-      groupLoc: this.state.groupLoc
+      groupLoc: this.state.groupLoc,
+      groupGames: this.props.games
     }).then(response => {
-      console.log(response);
+      // console.log("new group data (updated)")
+      // console.log(response.data);
+      this.setState({
+        groups: [...this.state.groups, response.data]
+      })
     }).catch(error => {
       console.log(error);
     })
@@ -43,7 +53,7 @@ class GroupSpace extends Component {
       <div className="col s12 center grouplistBox">
         <div className="groupspaceHeader">
           <h2 className="grouplistHeader">Groups</h2>
-          <XScrollGallery {...this.props}/>
+          <XScrollGallery groups={this.state.groups}/>
 
           <Modal
             header="Create a group"
