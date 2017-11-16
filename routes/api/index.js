@@ -332,24 +332,24 @@ router.post("/groups/newgroup", (req, res) => {
 								description: req.body.groupDesc,
 								location: req.body.groupLoc,
 								creator: req.body.creatorID,
-								games:req.body.groupGames},
+								games: req.body.groupGames},
 							$push: {members: req.body.creatorID,
 							}
 						};
 					let options = {upsert: true, new: true};
-					// Group.findOneAndUpdate(conditions, update, options, (err, response) => {
-					// 	console.log(response);
-					// 	User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
-					// 		.exec(response => res.json(response))
-					// 		.catch(error => console.log(error))
-					// })
-					Group.findOneAndUpdate(conditions, update, options)
-						.exec((err, response) => {
+					Group.findOneAndUpdate(conditions, update, options, (err, response) => {
 						console.log(response);
 						User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
 							.exec(response => res.json(response))
 							.catch(error => console.log(error))
 					})
+					// Group.findOneAndUpdate(conditions, update, options)
+					// 	.exec((err, response) => {
+					// 	console.log(response);
+					// 	User.findOneAndUpdate({ _id: req.body.creatorID }, {$push: {groups: response._id}})
+					// 		.exec(response => res.json(response))
+					// 		.catch(error => console.log(error))
+					// })
 			} else {
 				//if group does exist, return warning:
 				return console.log("group name is already in use!");
@@ -380,6 +380,7 @@ router.post("/user/:uid/:userName/:userMail", (req, res) => {
 					// .populate('games')
 					// .populate('wishlist')
 					.populate('groups')
+					.populate('friends')
 					.exec((error, resultUser) => {
 						if (!resultUser) {
 							user.save((err, result) => {

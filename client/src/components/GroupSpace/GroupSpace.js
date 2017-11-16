@@ -44,7 +44,7 @@ class GroupSpace extends Component {
       <div className="col s12 center grouplistBox">
         <div className="groupspaceHeader">
           <h2 className="grouplistHeader">Groups</h2>
-          <XScrollGallery {...this.props}/>
+          <XScrollGallery groups={this.props.groups}/>
 
           <Modal
             header="Create a group"

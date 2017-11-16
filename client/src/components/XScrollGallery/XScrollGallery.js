@@ -1,7 +1,7 @@
 import React from "react";
 import "./XScrollGallery.css";
 import InfoTile from "../InfoTile";
-import {Row} from "react-materialize";
+// import {Row} from "react-materialize";
 
 
 const XScrollGallery = props =>
