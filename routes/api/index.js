@@ -331,9 +331,9 @@ router.post("/groups/newgroup", (req, res) => {
 							$set:	{name: req.body.groupName,
 								description: req.body.groupDesc,
 								location: req.body.groupLoc,
-								creator: req.body.creatorID},
+								creator: req.body.creatorID,
+								games:req.body.groupGames},
 							$push: {members: req.body.creatorID,
-								games:req.body.groupGames
 							}
 						};
 					let options = {upsert: true, new: true};
