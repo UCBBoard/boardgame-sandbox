@@ -47,11 +47,12 @@ class App extends Component {
 							toNextLevel: response.data.toNextLevel,
 							cardNum: response.data.cardNum,
 							groups: response.data.groups,
+							cardGraphic: response.data.cardGraphic,
 							games: response.data.games,
 							friends: response.data.friends
 							});
 		    			console.log("searching database for user:");
-		    			console.log(response);
+		    			console.log(response.data);
 		    		})
 				// Axios.post(`/api/user/${user.uid}/${userName}`)
 				// .then((response, error) => {
@@ -90,6 +91,7 @@ class App extends Component {
 					increaseExp = {this.increaseExp}
 					updateLvl = {this.updateLvl}
 					groups = {this.state.groups}
+					cardGraphic = {this.state.cardGraphic}
 					games = {this.state.games}
 					friends = {this.state.friends}
 					/> : <Splash/>}
