@@ -1,7 +1,7 @@
 .infotile-frame {
   width: 125px;
   height: 125px;
-  margin: 12.5px;
+  margin: -5px 10px 10px 10px;
   background-color: #515664;
   display: inline-block;
   white-space: normal;
