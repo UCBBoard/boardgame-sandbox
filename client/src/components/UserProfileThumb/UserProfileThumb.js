@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./UserProfileThumb.css"
 // import goblin from "../../assets/cards/goblinCard.png";
 // import ctrice from "../../assets/cards/ctriceCard.png";

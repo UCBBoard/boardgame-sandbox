@@ -50,6 +50,7 @@ class Friendslist extends Component {
 		Axios.get("/api/user/all/" + this.props.uID)
 			.then(res => {
 				console.log("is this running? showAllFriends friendlist.js")
+				console.log(res)
 				this.setState({friends: res.data, friendsView: 'all'})
 		}).catch(function(error) {
 				console.error(error);
@@ -105,7 +106,7 @@ class Friendslist extends Component {
 
 				{this.state.friends.map((element, i) =>
 					<div key={i} className="center">
-						<FriendProfile level={element.level} userName={element.name} cardNum={element.cardNum}/>
+						<FriendProfile cardSrc={element.cardGraphic} level={element.level} userName={element.name} cardNum={element.cardNum}/>
 						{this.state.friendsView === 'all' ?
 						<Button data-id={element._id} onClick={this.addNotification} className="addFriendButton"> Add friend </Button> :
 						<Button data-id={element._id} onClick={this.removeFriend} className ="delete"> Delete friend </Button>

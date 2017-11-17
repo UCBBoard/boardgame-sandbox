@@ -49,9 +49,7 @@ class App extends Component {
 							groups: response.data.groups,
 							games: response.data.games,
 							friends: response.data.friends,
-							cardGraphic: response.data.cardGraphic,
-							games: response.data.games,
-							friends: response.data.friends
+							cardGraphic: response.data.cardGraphic
 							});
 		    			console.log("searching database for user:");
 		    			console.log(response.data);
@@ -96,8 +94,6 @@ class App extends Component {
 					games = {this.state.games}
 					friends = {this.state.friends}
 					cardGraphic = {this.state.cardGraphic}
-					games = {this.state.games}
-					friends = {this.state.friends}
 					/> : <Splash/>}
 				</div>
 			</BrowserRouter>

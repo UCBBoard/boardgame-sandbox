@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import "./FriendProfileDash.css";
-import goblin from "../../assets/cards/goblinCard.png";
-import ctrice from "../../assets/cards/ctriceCard.png";
-import robo from "../../assets/cards/roboCard.png";
-import rat from "../../assets/cards/ratCard.png";
-import gnome from "../../assets/cards/gnomeCard.png";
-import archer from "../../assets/cards/archerCard.png";
-import undead from "../../assets/cards/undeadCard.png";
-import naga from "../../assets/cards/nagaCard.png";
-import medusa from "../../assets/cards/medusaCard.png";
-import bear from "../../assets/cards/bearCard.png";
+// import goblin from "../../assets/cards/goblinCard.png";
+// import ctrice from "../../assets/cards/ctriceCard.png";
+// import robo from "../../assets/cards/roboCard.png";
+// import rat from "../../assets/cards/ratCard.png";
+// import gnome from "../../assets/cards/gnomeCard.png";
+// import archer from "../../assets/cards/archerCard.png";
+// import undead from "../../assets/cards/undeadCard.png";
+// import naga from "../../assets/cards/nagaCard.png";
+// import medusa from "../../assets/cards/medusaCard.png";
+// import bear from "../../assets/cards/bearCard.png";
 // import ReactTooltip from 'react-tooltip';
 
 
 class FriendProfileDash extends Component {
 	determineCard = cardNum => {
-		let cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
+		// let cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
 		let cardFlavourText = ["Reviled by most forest dwellers that come upon them, the Goblin nonetheless has a keen propensity for survival.",
 		"That's no chicken...",
 		'"Does not compute."',
@@ -36,7 +36,7 @@ class FriendProfileDash extends Component {
 						<p className="friendDCardDescription">{cardFlavourText[cardNum]}</p>
 					</div>
 				</div>
-				<img src={cardGraphic[cardNum]} className="friendDCard" alt="friendcard"/>
+				<img src={this.props.cardGraphic} className="friendDCard" alt="friendcard"/>
 			</div>
 			)
 	}
