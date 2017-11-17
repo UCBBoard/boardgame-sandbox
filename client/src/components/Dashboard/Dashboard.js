@@ -113,17 +113,17 @@ class Dashboard extends Component {
 	>
 	<SideNavItem userView
 		user={{
-			// background: ,
+			background:this.props.cardGraphic,
 			// image: ,
-			name: 'John Doe',
-			email: 'jdandturk@gmail.com'
+			// name: this.props.userName,
+			// email: 'jdandturk@gmail.com'
 		}}
 	/>
-	<SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
-	<SideNavItem href='#!second'>Second Link</SideNavItem>
+	<SideNavItem>{this.props.userName}</SideNavItem>
+	<SideNavItem id="friend-nav-btn" href='#!icon'>Friends</SideNavItem>
 	<SideNavItem divider />
-	<SideNavItem subheader>Subheader</SideNavItem>
-	<SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
+	<SideNavItem href='#!second'>Groups</SideNavItem>
+	<SideNavItem divider />
 </SideNav>
 							<div className="row dashRow">
 								<GroupSpace

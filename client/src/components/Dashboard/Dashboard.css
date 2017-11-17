@@ -71,6 +71,18 @@
   top:0;
 }
 
+.background {
+  height: 245px;
+}
+
+.background img {
+  width: 300px;
+}
+
+#friend-nav-btn {
+  margin-top: 180px;
+}
+
 @media screen and (max-width: 600px){
   .logoH1Dash {
     font-size: 60px;
