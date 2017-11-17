@@ -47,15 +47,11 @@ class App extends Component {
 							toNextLevel: response.data.toNextLevel,
 							cardNum: response.data.cardNum,
 							groups: response.data.groups,
-<<<<<<< HEAD
 							games: response.data.games,
 							friends: response.data.friends,
-							cardGraphic: response.data.cardGraphic
-=======
 							cardGraphic: response.data.cardGraphic,
 							games: response.data.games,
 							friends: response.data.friends
->>>>>>> ec9b5d96e1c69fd839ed075865848378de33a55d
 							});
 		    			console.log("searching database for user:");
 		    			console.log(response.data);
@@ -97,15 +93,12 @@ class App extends Component {
 					increaseExp = {this.increaseExp}
 					updateLvl = {this.updateLvl}
 					groups = {this.state.groups}
-<<<<<<< HEAD
 					games = {this.state.games}
 					friends = {this.state.friends}
 					cardGraphic = {this.state.cardGraphic}
-=======
 					cardGraphic = {this.state.cardGraphic}
 					games = {this.state.games}
 					friends = {this.state.friends}
->>>>>>> ec9b5d96e1c69fd839ed075865848378de33a55d
 					/> : <Splash/>}
 				</div>
 			</BrowserRouter>
