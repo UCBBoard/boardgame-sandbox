@@ -14,6 +14,7 @@ import GroupSpace from "../GroupSpace";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import scrollToComponent from 'react-scroll-to-component';
+import {SideNav, SideNavItem, Button} from 'react-materialize';
 import openSocket from 'socket.io-client';
 const socket = openSocket();
 
@@ -81,6 +82,10 @@ class Dashboard extends Component {
 		})
 	};
 
+	// openNav() {
+	// 	sideNav('show');
+	// }
+
 
 	notify = text => toast(text);
 
@@ -97,7 +102,27 @@ class Dashboard extends Component {
 							<div className="row dashRow">
 								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
 							</div>
+							<Button data-activates={'my-side-nav'}>test button</Button>
 
+<SideNav
+	trigger={<button id="">needs a trigger</button>}
+	options={{ closeOnClick: true }}
+	id="my-side-nav"
+	>
+	<SideNavItem userView
+		user={{
+			background: 'img/office.jpg',
+			image: 'img/yuna.jpg',
+			name: 'John Doe',
+			email: 'jdandturk@gmail.com'
+		}}
+	/>
+	<SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
+	<SideNavItem href='#!second'>Second Link</SideNavItem>
+	<SideNavItem divider />
+	<SideNavItem subheader>Subheader</SideNavItem>
+	<SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem>
+</SideNav>
 							<div className="row dashRow">
 								<GroupSpace
 									uID={this.props.uID}
@@ -133,7 +158,6 @@ class Dashboard extends Component {
 
         </div>
 		    </Background>
-
 		)
 	}
 }
