@@ -14,7 +14,7 @@
 .list-overflow-container {
   max-height: 545px;
   border: 1px #DDDDDD solid;
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -71,6 +71,21 @@
   top:0;
 }
 
+.background {
+  height: 245px;
+}
+
+.background img {
+  width: 300px;
+}
+
+#friend-nav-btn {
+  margin-top: 220px;
+}
+
+#my-side-nav li {
+  border: none;
+}
 @media screen and (max-width: 600px){
   .logoH1Dash {
     font-size: 60px;
