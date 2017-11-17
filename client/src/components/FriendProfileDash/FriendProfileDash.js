@@ -36,7 +36,7 @@ class FriendProfileDash extends Component {
 						<p className="friendDCardDescription">{cardFlavourText[cardNum]}</p>
 					</div>
 				</div>
-				<img src={this.props.cardGraphic} className="friendDCard" alt="friendcard"/>
+				<img src={this.props.cardSrc} className="friendDCard" alt="friendcard"/>
 			</div>
 			)
 	}
