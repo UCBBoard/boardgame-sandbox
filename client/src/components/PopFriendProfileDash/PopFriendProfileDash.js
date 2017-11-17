@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./PopFriendProfileDash.css";
-import {CollapsibleItem} from "react-materialize";
+// import {CollapsibleItem} from "react-materialize";
 // import goblin from "../../assets/cards/goblinCard.png";
 // import ctrice from "../../assets/cards/ctriceCard.png";
 // import robo from "../../assets/cards/roboCard.png";

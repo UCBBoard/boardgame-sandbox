@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./PopFriendSpace.css";
-import noFriends from "../../assets/img/noFriends.png";
+// import noFriends from "../../assets/img/noFriends.png";
 import {Modal, Button} from "react-materialize";
 import Friendslist from "../Friendslist";
 import PopFriendProfileDash from "../PopFriendProfileDash";
@@ -12,7 +12,7 @@ class PopFriendSpace extends Component {
   conditional = props => {
     let friends = this.props.friends.map((element, i) => {
             console.log(element);
-            return <CollapsibleItem key={"fc" + element._id + i}><PopFriendProfileDash level={element.level} userName={element.name} cardSrc={element.cardGraphic} cardNum={element.cardNum} /></CollapsibleItem>
+            return <CollapsibleItem header={element.name} key={"fc" + element._id + i}><PopFriendProfileDash level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} /></CollapsibleItem>
           })
     if (this.props.friends.length > 0){
       return (
