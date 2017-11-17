@@ -15,6 +15,7 @@ import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import scrollToComponent from 'react-scroll-to-component';
+import {SideNav, SideNavItem, Button} from 'react-materialize';
 import openSocket from 'socket.io-client';
 const socket = openSocket();
 
@@ -26,6 +27,8 @@ class Dashboard extends Component {
 		groups: [],
 		cardNum: 0
 	}
+
+	// cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
 
 	getNotifications = () => {
 		console.log(this.props.uID);
@@ -82,6 +85,10 @@ class Dashboard extends Component {
 		})
 	};
 
+	// openNav() {
+	// 	sideNav('show');
+	// }
+
 
 	notify = text => toast(text);
 
@@ -89,12 +96,33 @@ class Dashboard extends Component {
 		return (
 			 <Background backgroundName="dash-background">
 			 <Header />
-			<UserProfileThumb cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
+			  <div className="center mainContainer">
+					<div className="loggedIn col s6 right">Logged in as {this.props.userName}
+						<UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
+					</div>
+			  	<img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
+			  </div>
 		      <div className="container dashContainer">
 							<div className="row dashRow">
 								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
 							</div>
-
+							<Button data-activates={'my-side-nav'}>test button</Button>
+							<SideNav
+								trigger={<button id="">needs a trigger</button>}
+								options={{ closeOnClick: false }}
+								id="my-side-nav"
+								>
+								<SideNavItem userView
+									user={{
+										background:this.props.cardGraphic
+									}}
+								/>
+								<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
+								<SideNavItem href='#!icon'>Friends</SideNavItem>
+								<SideNavItem divider />
+								<SideNavItem href='#!second'>Groups</SideNavItem>
+								<SideNavItem divider />
+							</SideNav>
 							<div className="row dashRow">
 								<GroupSpace
 									uID={this.props.uID}
@@ -105,7 +133,7 @@ class Dashboard extends Component {
 
 							<div className="row dashRow">
 								<section className='UserProfile' ref={(section) => { this.UserProfile = section; }}>
-									<UserProfile level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
+									<UserProfile cardSrc={this.props.cardGraphic}level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
 								</section>
 							</div>
 
@@ -131,7 +159,6 @@ class Dashboard extends Component {
 
         </div>
 		    </Background>
-
 		)
 	}
 }

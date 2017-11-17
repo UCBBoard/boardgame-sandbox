@@ -12,7 +12,7 @@ class FriendSpace extends Component {
   conditional = props => {
     let friends = this.props.friends.map((element, i) => {
             console.log(element);
-            return <div key={"fc" + element._id + i}><FriendProfileDash level={element.level} userName={element.name} cardNum={element.cardNum} /></div>
+            return <div key={"fc" + element._id + i}><FriendProfileDash level={element.level} userName={element.name} cardSrc={element.cardGraphic} cardNum={element.cardNum} /></div>
           }
           )
 
