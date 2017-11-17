@@ -48,10 +48,11 @@ class App extends Component {
 							cardNum: response.data.cardNum,
 							groups: response.data.groups,
 							games: response.data.games,
-							friends: response.data.friends
+							friends: response.data.friends,
+							cardGraphic: response.data.cardGraphic
 							});
 		    			console.log("searching database for user:");
-		    			console.log(response);
+		    			console.log(response.data);
 		    		})
 				// Axios.post(`/api/user/${user.uid}/${userName}`)
 				// .then((response, error) => {
@@ -92,6 +93,7 @@ class App extends Component {
 					groups = {this.state.groups}
 					games = {this.state.games}
 					friends = {this.state.friends}
+					cardGraphic = {this.state.cardGraphic}
 					/> : <Splash/>}
 				</div>
 			</BrowserRouter>
