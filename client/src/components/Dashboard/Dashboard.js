@@ -6,7 +6,6 @@ import Newsfeed from "../Newsfeed";
 import HoverButtons from "../HoverButtons";
 import Background from "../Background"
 import logo from "../../assets/img/logo.png"
-import LevelBar from "../LevelBar";
 import UserProfile from "../UserProfile";
 import UserProfileThumb from "../UserProfileThumb";
 import Friendspace from "../FriendSpace";
@@ -95,7 +94,7 @@ class Dashboard extends Component {
 	render (props) {
 		return (
 			 <Background backgroundName="dash-background">
-			 <Header />
+			 <Header exp={this.props.exp} toNextLevel={this.props.toNextLevel}/>
 			  <div className="center mainContainer">
 					<div className="loggedIn col s6 right">Logged in as {this.props.userName}
 						<UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
@@ -145,7 +144,6 @@ class Dashboard extends Component {
 								<Newsfeed />
 							</div>
 
-		      <LevelBar exp={this.props.exp} toNextLevel={this.props.toNextLevel}/>
 		      <HoverButtons uID={this.props.uID} notifications={this.state.notifications} getNotifications={this.getNotifications}/>
 		      <ToastContainer
           position="top-right"

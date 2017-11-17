@@ -1,80 +1,25 @@
-.h4Newsfeed {
-  background: #262b3e;
-  color: white;
-  border-radius: 8px 8px 0 0;
-  border-bottom: 1px solid black;
-  margin-top: 0;
-  margin-bottom: 0px;
-  padding: 10px 0;
-  font-family: 'Wendy One', sans-serif;
+.headerLogo {
+    margin: auto;
+    width: 275px;
 }
 
-.headlineA {
-  color: #484848;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-style: italic;
+.logoH1Header {
+    font-family: 'Wendy One', sans-serif;
+    text-decoration: none;
+    padding: 0;
+    margin: -15px 0 0;
+    font-size: 40px;
+    text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.56);
+    display: inline-block;
 }
 
-.headlineA:hover {
-  text-decoration: underline;
+nav {
+    background: #3c466a;
+    position: fixed;
 }
 
-.headlineBox {
-  overflow-y: scroll;
-  height: 435px;
-  padding-top: 15px;
-}
-
-.list-overflow-container {
-  max-height: 545px;
-  border: 1px #DDDDDD solid;
-  border-radius: 4px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-.list-overflow-container ul {
-  margin: 0;
-}
-
-.list-overflow-container li {
-  border-radius: 0px;
-  border-left: none;
-  border-right: none;
-}
-
-.list-overflow-container li * {
-  cursor: pointer;
-}
-
-.list-overflow-container li a {
-  color: #2A878C;
-}
-
-.list-overflow-container li:first-child {
-  border-top: none;
-}
-
-.list-overflow-container li:last-child {
-  border-bottom: none;
-}
-
-.newsfeedBox {
-  border-radius: 10px;
-  height: 500px;
-  padding: 0 !important;
-  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.23);
-  width: 70%;
-  background-color: white;
-  margin: 0 auto 35px;
-}
-
-.newsfeedHeadline {
-  padding: 0 20px;
-}
-
-@media screen and (max-width: 750px){
-  .newsfeedBox {
-    width: 100%;
-  }
+.siteLogoHeader {
+    width: 50px;
+    margin-top: 40px;
+    vertical-align: bottom;
 }

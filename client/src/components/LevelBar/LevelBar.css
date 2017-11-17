@@ -2,9 +2,6 @@
 .levelDiv {
 	width: 150px;
 	margin: 0 0 30px 15px;
-	bottom: 0;
-	left: 0;
-	position: fixed;
 }
 
 .levelHeader {
