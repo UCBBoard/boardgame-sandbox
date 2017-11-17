@@ -119,18 +119,12 @@ class Dashboard extends Component {
 								/>
 								<Collapsible id="popup-collapse">
 									<CollapsibleItem header="Friends" >
-										<Collapsible>
-											<PopFriendSpace friends={this.props.friends}>
-											</PopFriendSpace>
-										</Collapsible>
+										<PopFriendSpace friends={this.props.friends}>
+										</PopFriendSpace>
 									</CollapsibleItem>
-
 								</Collapsible>
-								{/* <SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
-								<SideNavItem href='#!icon'>Friends</SideNavItem>
-								<SideNavItem divider />
-								<SideNavItem href='#!second'>Groups</SideNavItem>
-								<SideNavItem divider /> */}
+								{/* <SideNavItem divider />
+								<SideNavItem href='#!second'>Groups</SideNavItem> */}
 							</SideNav>
 
 							<div className="row dashRow">

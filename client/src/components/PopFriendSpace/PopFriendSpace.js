@@ -4,7 +4,7 @@ import "./PopFriendSpace.css";
 import {Modal, Button} from "react-materialize";
 import Friendslist from "../Friendslist";
 import PopFriendProfileDash from "../PopFriendProfileDash";
-import {CollapsibleItem} from "react-materialize";
+import {Collapsible, CollapsibleItem} from "react-materialize";
 
 
 
@@ -12,20 +12,19 @@ class PopFriendSpace extends Component {
   conditional = props => {
     let friends = this.props.friends.map((element, i) => {
             console.log(element);
-            return <CollapsibleItem header={element.name} key={"fc" + element._id + i}><PopFriendProfileDash level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} /></CollapsibleItem>
+            return <CollapsibleItem
+              header={element.name}
+              key={"fc" + element._id + i}>
+              <PopFriendProfileDash level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
+            </CollapsibleItem>
           })
     if (this.props.friends.length > 0){
-      return (
-        <div>
-          {friends}
-        </div>
-        )
+      return friends;
     }
   }
 
   render = (props) =>
-  <div className="col s12 center">
-      <div className="noFriendsDiv">
+  <Collapsible className="pop-friend-profile">
         {this.conditional()}
         <Modal
 	        header="Friends"
@@ -33,8 +32,7 @@ class PopFriendSpace extends Component {
 	        >
 	        	<Friendslist uID={this.props.uID}/>
 					</Modal>
-	      </div>
-  </div>
+  </Collapsible>
 }
 
 export default PopFriendSpace;
