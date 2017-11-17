@@ -54,17 +54,6 @@ class App extends Component {
 		    			console.log("searching database for user:");
 		    			console.log(response.data);
 		    		})
-				// Axios.post(`/api/user/${user.uid}/${userName}`)
-				// .then((response, error) => {
-				// 	this.setState({
-				// 		level: response.data.level,
-				// 		UID: user.uid,
-				// 		userName: userName,
-				// 		authed: true,
-				// 		loading: false,
-				// 	});
-				// 	console.log("searching database for user:" + response);
-				// })
 			} else {
 				this.setState({
 					authed: false,

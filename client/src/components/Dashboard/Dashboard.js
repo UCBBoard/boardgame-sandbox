@@ -10,11 +10,12 @@ import LevelBar from "../LevelBar";
 import UserProfile from "../UserProfile";
 import UserProfileThumb from "../UserProfileThumb";
 import Friendspace from "../FriendSpace";
+import PopFriendSpace from "../PopFriendSpace";
 import GroupSpace from "../GroupSpace";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import scrollToComponent from 'react-scroll-to-component';
-import {SideNav, SideNavItem, Button} from 'react-materialize';
+import {SideNav, SideNavItem, Button, Collapsible, CollapsibleItem} from 'react-materialize';
 import openSocket from 'socket.io-client';
 const socket = openSocket();
 
@@ -104,6 +105,7 @@ class Dashboard extends Component {
 							<div className="row dashRow">
 								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
 							</div>
+
 							<Button data-activates={'my-side-nav'}>test button</Button>
 							<SideNav
 								trigger={<button id="">needs a trigger</button>}
@@ -115,12 +117,22 @@ class Dashboard extends Component {
 										background:this.props.cardGraphic
 									}}
 								/>
-								<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
+								<Collapsible id="popup-collapse">
+									<CollapsibleItem header="Friends" >
+										<Collapsible>
+											<PopFriendSpace friends={this.props.friends}>
+											</PopFriendSpace>
+										</Collapsible>
+									</CollapsibleItem>
+
+								</Collapsible>
+								{/* <SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
 								<SideNavItem href='#!icon'>Friends</SideNavItem>
 								<SideNavItem divider />
 								<SideNavItem href='#!second'>Groups</SideNavItem>
-								<SideNavItem divider />
+								<SideNavItem divider /> */}
 							</SideNav>
+
 							<div className="row dashRow">
 								<GroupSpace
 									uID={this.props.uID}

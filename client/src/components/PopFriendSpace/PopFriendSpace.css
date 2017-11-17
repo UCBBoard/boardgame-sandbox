@@ -1,0 +1,43 @@
+.addFriendButtonDash {
+	margin-bottom: 50px;
+}
+
+.friendsImg {
+  width: 600px;
+  margin: 30px;
+}
+
+.friendsSpaceH1, .friendsSpaceH3 {
+    font-family: 'Wendy One', sans-serif;
+}
+
+.friendsSpaceH1 {
+  margin-top: 0;
+  padding: 0;
+}
+
+.friendsSpaceH3 {
+  font-size: 35px;
+  margin-bottom: 50px;
+}
+
+@media screen and (max-width: 600px){
+	.friendsImg {
+	  width: 300px;
+	}
+
+	.friendsSpaceH3 {
+	  font-size: 25px;
+	  margin-bottom: 50px;
+	}
+}
+
+@media screen and (max-width: 400px){
+	.addFriendButtonDash {
+		margin-bottom: 100px;
+	}
+	.friendsImg {
+	  width: 200px;
+	  margin: 30px;
+	}
+}
