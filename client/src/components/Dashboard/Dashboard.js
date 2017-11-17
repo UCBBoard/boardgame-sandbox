@@ -11,6 +11,7 @@ import UserProfile from "../UserProfile";
 import UserProfileThumb from "../UserProfileThumb";
 import Friendspace from "../FriendSpace";
 import GroupSpace from "../GroupSpace";
+import Header from "../Header";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import scrollToComponent from 'react-scroll-to-component';
@@ -87,12 +88,8 @@ class Dashboard extends Component {
 	render (props) {
 		return (
 			 <Background backgroundName="dash-background">
-			  <div className="center mainContainer">
-					<div className="loggedIn col s6 right">Logged in as {this.props.userName}
-						<UserProfileThumb cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
-					</div>
-			  	<img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
-			  </div>
+			 <Header />
+			<UserProfileThumb cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
 		      <div className="container dashContainer">
 							<div className="row dashRow">
 								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
