@@ -108,19 +108,16 @@ class Dashboard extends Component {
 
 <SideNav
 	trigger={<button id="">needs a trigger</button>}
-	options={{ closeOnClick: true }}
+	options={{ closeOnClick: false }}
 	id="my-side-nav"
 	>
 	<SideNavItem userView
 		user={{
-			background:this.props.cardGraphic,
-			// image: ,
-			// name: this.props.userName,
-			// email: 'jdandturk@gmail.com'
+			background:this.props.cardGraphic
 		}}
 	/>
-	<SideNavItem>{this.props.userName}</SideNavItem>
-	<SideNavItem id="friend-nav-btn" href='#!icon'>Friends</SideNavItem>
+	<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
+	<SideNavItem href='#!icon'>Friends</SideNavItem>
 	<SideNavItem divider />
 	<SideNavItem href='#!second'>Groups</SideNavItem>
 	<SideNavItem divider />

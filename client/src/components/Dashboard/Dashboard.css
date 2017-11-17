@@ -80,9 +80,12 @@
 }
 
 #friend-nav-btn {
-  margin-top: 180px;
+  margin-top: 220px;
 }
 
+#my-side-nav li {
+  border: none;
+}
 @media screen and (max-width: 600px){
   .logoH1Dash {
     font-size: 60px;
