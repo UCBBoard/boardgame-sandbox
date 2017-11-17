@@ -36,17 +36,17 @@ class Dashboard extends Component {
 			})
 	}
 
-	getFriends = () => {
-		Axios.get(`api/user/${this.props.uID}/friends`)
-			.then(res => {
-				this.setState({
-					friends: res.data.friends,
-					groups: res.data.groups
-				})
-			}).catch(error => {
-				console.error(error);
-			})
-	}
+	// getFriends = () => {
+	// 	Axios.get(`api/user/${this.props.uID}/friends`)
+	// 		.then(res => {
+	// 			this.setState({
+	// 				friends: res.data.friends,
+	// 				groups: res.data.groups
+	// 			})
+	// 		}).catch(error => {
+	// 			console.error(error);
+	// 		})
+	// }
 
 	getLvl = () => {
 		this.props.updateLvl(this.props.uID);
@@ -61,7 +61,7 @@ class Dashboard extends Component {
 		const elem = document.querySelector(".modal-overlay")
 		if(elem) elem.remove();
 		this.getNotifications();
-		this.getFriends();
+		// this.getFriends();
 		socket.on(this.props.uID, thingToUpdate => {
 			if (thingToUpdate === "notifications"){
 				this.getNotifications();
@@ -102,6 +102,7 @@ class Dashboard extends Component {
 								<GroupSpace
 									uID={this.props.uID}
 									groups={this.props.groups}
+									games={this.props.games}
 								/>
 							</div>
 
@@ -112,7 +113,7 @@ class Dashboard extends Component {
 							</div>
 
 							<div className="row dashRow">
-								<Friendspace uID={this.props.uID} friends={this.state.friends}/>
+								<Friendspace uID={this.props.uID} friends={this.props.friends}/>
 							</div>
 
 							<div className="row dashRow">
