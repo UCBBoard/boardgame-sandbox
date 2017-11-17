@@ -384,10 +384,13 @@ router.post("/user/:uid/:userName/:userMail", (req, res) => {
 					cardNum: Math.floor(Math.random() * 9),
 				})
 		//New Version refactored to allow for population of whatever we want in App.js
+			let cardGraphic = ["goblin", "ctrice", "robo", "rat", "gnome", "archer", "undead", "naga", "medusa", "bear"];
+			let myImage = ""
 			User.findOne({_id:req.params.uid})
 					// .populate('games')
 					// .populate('wishlist')
 					.populate('groups')
+					.populate('friends')
 					.exec((error, resultUser) => {
 						if (!resultUser) {
 							user.save((err, result) => {

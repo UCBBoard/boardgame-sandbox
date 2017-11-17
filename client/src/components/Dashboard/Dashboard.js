@@ -27,6 +27,8 @@ class Dashboard extends Component {
 		cardNum: 0
 	}
 
+	// cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
+
 	getNotifications = () => {
 		console.log(this.props.uID);
 		Axios.get(`api/user/${this.props.uID}/notifications`)
@@ -111,8 +113,8 @@ class Dashboard extends Component {
 	>
 	<SideNavItem userView
 		user={{
-			background: 'img/office.jpg',
-			image: 'img/yuna.jpg',
+			// background: ,
+			// image: ,
 			name: 'John Doe',
 			email: 'jdandturk@gmail.com'
 		}}

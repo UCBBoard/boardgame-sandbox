@@ -49,7 +49,7 @@ class App extends Component {
 							groups: response.data.groups
 							});
 		    			console.log("searching database for user:");
-		    			console.log(response);
+		    			console.log(response.data);
 		    		})
 				// Axios.post(`/api/user/${user.uid}/${userName}`)
 				// .then((response, error) => {

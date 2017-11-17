@@ -5,7 +5,7 @@ import {Col} from "react-materialize";
 
 const InfoTile = props =>
 
-  <div className="infotile-frame">
+  <div data-activates={'my-side-nav'} className="infotile-frame">
     Title: {props.info.name}<br/>
     Description: {props.info.description}<br/>
     Location: {props.info.location}<br/>
