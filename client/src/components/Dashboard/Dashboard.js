@@ -96,7 +96,7 @@ class Dashboard extends Component {
 			 <Background backgroundName="dash-background">
 			  <div className="center mainContainer">
 					<div className="loggedIn col s6 right">Logged in as {this.props.userName}
-						<UserProfileThumb cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
+						<UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
 					</div>
 			  	<img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
 			  </div>
@@ -105,23 +105,22 @@ class Dashboard extends Component {
 								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
 							</div>
 							<Button data-activates={'my-side-nav'}>test button</Button>
-
-<SideNav
-	trigger={<button id="">needs a trigger</button>}
-	options={{ closeOnClick: false }}
-	id="my-side-nav"
-	>
-	<SideNavItem userView
-		user={{
-			background:this.props.cardGraphic
-		}}
-	/>
-	<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
-	<SideNavItem href='#!icon'>Friends</SideNavItem>
-	<SideNavItem divider />
-	<SideNavItem href='#!second'>Groups</SideNavItem>
-	<SideNavItem divider />
-</SideNav>
+							<SideNav
+								trigger={<button id="">needs a trigger</button>}
+								options={{ closeOnClick: false }}
+								id="my-side-nav"
+								>
+								<SideNavItem userView
+									user={{
+										background:this.props.cardGraphic
+									}}
+								/>
+								<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
+								<SideNavItem href='#!icon'>Friends</SideNavItem>
+								<SideNavItem divider />
+								<SideNavItem href='#!second'>Groups</SideNavItem>
+								<SideNavItem divider />
+							</SideNav>
 							<div className="row dashRow">
 								<GroupSpace
 									uID={this.props.uID}
@@ -132,7 +131,7 @@ class Dashboard extends Component {
 
 							<div className="row dashRow">
 								<section className='UserProfile' ref={(section) => { this.UserProfile = section; }}>
-									<UserProfile level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
+									<UserProfile cardSrc={this.props.cardGraphic}level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
 								</section>
 							</div>
 

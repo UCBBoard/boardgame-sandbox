@@ -96,7 +96,6 @@ class App extends Component {
 					games = {this.state.games}
 					friends = {this.state.friends}
 					cardGraphic = {this.state.cardGraphic}
-					cardGraphic = {this.state.cardGraphic}
 					games = {this.state.games}
 					friends = {this.state.friends}
 					/> : <Splash/>}
