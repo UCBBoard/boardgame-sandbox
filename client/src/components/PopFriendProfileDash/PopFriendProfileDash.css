@@ -1,102 +1,19 @@
-.friendDCardDescription {
-    z-index: 1;
-    color: black;
-    width: 335px;
-    font-style: italic;
-    line-height: 22px;
-    margin: auto;
-}
-
-.friendDCardDescriptionDiv{
-	height: 187px;
-    width: 200px;
-    left: 5px;
-    bottom: -125px;
+.friendPCardLvl {
+    font-family: "arial";
     position: relative;
-    line-height: 16px;
-    margin: auto;
-    z-index: 1;	
-    font-size: 13px;
-
-}
-
-.friendDCardDiv {
-	height: 413px;
-    margin: 25px;
-}
-
-
-.friendDCardLvl {
-	font-family: "arial";
-	position: relative;
-    right: -115px;
-    top: -56px;
+    /*right: -115px;*/
+    /*top: -56px;*/
     font-size: 20px;
     z-index: 1;
     color: black;
 }
 
-.friendDCardTextDiv {
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 400px;
-    width: 300px;
-    margin: auto;
+.friendPCardTextDiv {
+    margin-top: -10px;
+    background-color: #a9a9d9;
 }
 
-@media screen and (max-width: 700px){
-
-    .friendDCardDescription {
-        z-index: 1;
-        color: black;
-        width: 300px;
-        font-style: italic;
-        line-height: 22px;
-        margin: auto;
-    }
-
-    .friendDCardDescriptionDiv{
-        height: 187px;
-        width: 200px;
-        left: 5px;
-        bottom: -72px;
-        position: relative;
-        line-height: 16px;
-        margin: auto;
-        z-index: 1; 
-        font-size: 9px;
-
-    }
-
-    .friendDCardDiv {
-        height: 413px;
-        margin: 25px;
-    }
-
-
-    .friendDCardLvl {
-        font-family: "arial";
-        position: relative;
-        right: -93px;
-        top: -56px;
-        font-size: 20px;
-        z-index: 1;
-        color: black;
-    }
-
-    .friendDCardTextDiv {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 400px;
-        width: 250px;
-        margin: auto;
-    }
-
-    .friendDProfileH1 {
-        font-family: 'Wendy One', sans-serif;
-        margin-top: 0;
-        padding-top: 0;
-    }
+.friendPCard {
+ width: 100px;
 }
+

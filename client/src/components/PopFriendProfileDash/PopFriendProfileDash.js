@@ -29,12 +29,11 @@ class PopFriendProfileDash extends Component {
 		'"ROOOAAAR" - Bear Bearington'
 		]
 		return(
-			<div className="friendDCardTextDiv">
-				<h5 className="friendDCardLvl">Lv.{this.props.level}</h5>
-				<div className="friendDCardDescriptionDiv valign-wrapper">
-					<p className="friendDCardDescription">{cardFlavourText[cardNum]}</p>
+			<div className="friendPCardTextDiv">
+				<h5 className="friendPCardLvl">Lv.{this.props.level}</h5>
+				<div className="friendPCardDescriptionDiv valign-wrapper">
 				</div>
-				{/* <img src={this.props.cardSrc} className="friendDCard" alt="friendcard"/> */}
+				<img src={this.props.cardSrc} className="friendPCard" alt="friendcard"/>
 			</div>
 			)
 	}
