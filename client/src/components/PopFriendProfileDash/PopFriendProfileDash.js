@@ -30,7 +30,6 @@ class PopFriendProfileDash extends Component {
 		]
 		return(
 			<div className="friendDCardTextDiv">
-				<h3 className="friendDCardUsername">{this.props.userName}</h3>
 				<h5 className="friendDCardLvl">Lv.{this.props.level}</h5>
 				<div className="friendDCardDescriptionDiv valign-wrapper">
 					<p className="friendDCardDescription">{cardFlavourText[cardNum]}</p>
