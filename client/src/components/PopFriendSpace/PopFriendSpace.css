@@ -21,6 +21,14 @@
   margin-bottom: 50px;
 }
 
+.pop-friend-profile {
+  background-color: #2e2e3c;
+}
+
+#popup-collapse .pop-friend-profile .collapsible-header {
+  margin-left: 10px;
+}
+
 @media screen and (max-width: 600px){
 	.friendsImg {
 	  width: 300px;

@@ -71,19 +71,20 @@
   top:0;
 }
 
-.background {
-  height: 245px;
+.side-nav .user-view .background, .side-nav .userView .background {
+  height: 225px;
+  border: 1px #2e2e3c solid;
 }
 
 .background img {
   width: 300px;
-  height: 230px;
+  height: 420px;
   /*margin-left: -3px;*/
   margin-top: -13px;
 }
 
 #popup-collapse {
-  margin-top: 212px;
+  margin-top: 191px;
 }
 
 #my-side-nav {
@@ -92,6 +93,10 @@
 
 #my-side-nav li {
   border: none;
+}
+
+.userView {
+  height: 32px;
 }
 
 
