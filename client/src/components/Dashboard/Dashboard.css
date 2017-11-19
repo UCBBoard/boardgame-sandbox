@@ -154,7 +154,7 @@
 
 
 /* Bounce To Right (Ian Lunn, Hover.css)*/
-.collapsible-header {
+#my-side-nav .collapsible-header {
   width: 100%;
   display: inline-block;
   vertical-align: middle;
@@ -167,7 +167,7 @@
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
-.collapsible-header:before {
+#my-side-nav .collapsible-header:before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -187,11 +187,11 @@
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
 }
-.collapsible-header:hover, .collapsible-header:focus, .collapsible-header:active {
+#my-side-nav .collapsible-header:hover, .collapsible-header:focus, .collapsible-header:active {
   color: white;
   background-color: #515664;
 }
-.collapsible-header:hover:before, .collapsible-header:focus:before, .collapsible-header:active:before {
+#my-side-nav .collapsible-header:hover:before, .collapsible-header:focus:before, .collapsible-header:active:before {
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);

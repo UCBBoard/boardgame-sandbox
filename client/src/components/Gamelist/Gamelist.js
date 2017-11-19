@@ -32,7 +32,7 @@ class Gamelist extends Component {
     this.setState({
       switchValue: listChoice
     })
-    Axios.get("/api/games/" + myId + "/mylist/" + [listChoice])
+    Axios.get(`/api/games/mylist/${myId}/${listChoice}`)
         .then(response => {
           this.setState({myGames : response.data});
         })
@@ -57,16 +57,13 @@ class Gamelist extends Component {
 
 // Handles adding new games to the DB when the user clicks on a search result in Gamelist.
   handleNewGameSubmit1 = (gameId, owned) => {
-    // const gameID = 213460;
-    console.log("<<<<getting second argument in handleNewGameSubmit1");
-    console.log(owned);
     this.props.increaseExp(10)
     console.log("subbing new game");
     this.props.notification("New game added! +10 EXP!");
     let userId = this.props.uID;
-    const postRoute = "/api/newgame/" + gameId + "/" + userId + "/" + owned;
-    console.log("postroute: " + postRoute);
-    Axios.post(postRoute)
+    // const postRoute = "/api/newgame/" + gameId + "/" + userId + "/" + owned;
+    // console.log("postroute: " + postRoute);
+    Axios.post(`/api/newgame/${gameId}/${userId}/${owned}/`)
     .then((response) => {
       console.log(response);
       this.setState({
@@ -100,19 +97,24 @@ class Gamelist extends Component {
       collVis: false
     })
     let currentValue = document.getElementById("newGame").value;
-    Axios.get("/api/games/search/" + currentValue)
+    Axios.get(`/api/games/search/${currentValue}`)
       .then((response) => {
         // console.log(response.data);
         response.data.map((data) => {
           // console.log(data);
-          let dataName = data.name[0]._;
-          let dataDate = data.yearpublished[0];
-          let dataId = data.$.objectid;
-          let resultObj = {
-            name: dataName,
-            date: dataDate,
-            id: dataId
-          };
+          let resultObj = {};
+          if(data.yearpublished === undefined) {
+            return console.log("bad data from BGG")
+          } else {
+            let dataName = data.name[0]._ || data.name[0];
+            let dataDate = data.yearpublished[0] || data.yearpublished;
+            let dataId = data.$.objectid;
+            resultObj = {
+              name: dataName,
+              date: dataDate,
+              id: dataId
+            };
+          }
           return this.setState({
               searchArray: [...this.state.searchArray, resultObj],
               preloader: false,

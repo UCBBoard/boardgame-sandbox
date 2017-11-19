@@ -69,6 +69,7 @@ class Dashboard extends Component {
 		const elem = document.querySelector(".modal-overlay")
 		if(elem) elem.remove();
 		this.getNotifications();
+		this.setState({...this.props})
 		// this.getFriends();
 		socket.on(this.props.uID, thingToUpdate => {
 			if (thingToUpdate === "notifications"){
@@ -107,7 +108,7 @@ class Dashboard extends Component {
 			  </div>
 		      <div className="container dashContainer">
 							<div className="row dashRow">
-								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
+								<Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
 							</div>
 
 							<Button data-activates={'my-side-nav'}>test button</Button>
@@ -123,7 +124,7 @@ class Dashboard extends Component {
 								/>
 								<Collapsible id="popup-collapse">
 									<CollapsibleItem header="Friends" >
-										<PopFriendSpace uID={this.props.uID} friends={this.props.friends}>
+										<PopFriendSpace uID={this.props.uID} friends={this.state.friends}>
 										</PopFriendSpace>
 									</CollapsibleItem>
 								</Collapsible>
