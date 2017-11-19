@@ -99,6 +99,59 @@
   height: 32px;
 }
 
+.scrollbar {
+    background-color: #F5F5F5;
+    float: left;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    width: 65px;
+    overflow-y: scroll;
+}
+
+#my-side-nav::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+  float: right;
+}
+#my-side-nav::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+#my-side-nav::-webkit-scrollbar-thumb {
+  background-color: #F90; 
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .2) 50%,
+    rgba(255, 255, 255, .2) 75%,
+    transparent 75%,
+    transparent)
+}
+
+#db-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+  float: right;
+}
+#db-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+#db-scroll::-webkit-scrollbar-thumb {
+  background-color: #F90; 
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .2) 50%,
+    rgba(255, 255, 255, .2) 75%,
+    transparent 75%,
+    transparent)
+}
+
 
 /* Bounce To Right (Ian Lunn, Hover.css)*/
 .collapsible-header {

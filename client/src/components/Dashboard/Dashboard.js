@@ -52,6 +52,10 @@ class Dashboard extends Component {
 	// 		})
 	// }
 
+	componentWillMount(){
+		document.body.id = "db-scroll";
+	}
+
 	getLvl = () => {
 		this.props.updateLvl(this.props.uID);
 	}
@@ -111,6 +115,7 @@ class Dashboard extends Component {
 								trigger={<button id="">needs a trigger</button>}
 								options={{ closeOnClick: false }}
 								id="my-side-nav"
+								class="scrollbar"
 								>
 								<SideNavItem userView
 									user={{

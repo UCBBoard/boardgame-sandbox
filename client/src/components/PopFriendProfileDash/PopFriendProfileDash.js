@@ -29,7 +29,7 @@ class PopFriendProfileDash extends Component {
 		'"ROOOAAAR" - Bear Bearington'
 		]
 		return(
-			<div className="friendPCardTextDiv">
+			<div data-friend-id={this.props.friendId} className="friendPCardTextDiv">
 				<h5 className="friendPCardLvl">Lv.{this.props.level}</h5>
 				<div className="friendPCardDescriptionDiv valign-wrapper">
 				</div>

@@ -15,12 +15,16 @@ class PopFriendSpace extends Component {
             return <CollapsibleItem
               header={element.name}
               key={"fc" + element._id + i}>
-              <PopFriendProfileDash level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
+              <PopFriendProfileDash friendId={element._id} onClick={() => this.gameCompare()} level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
             </CollapsibleItem>
           })
     if (this.props.friends.length > 0){
       return friends;
     }
+  }
+
+  gameCompare(e) {
+    console.log("gameCompare");
   }
 
   render = (props) =>
