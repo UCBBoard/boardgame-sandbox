@@ -115,7 +115,6 @@ class Dashboard extends Component {
 								trigger={<button id="">needs a trigger</button>}
 								options={{ closeOnClick: false }}
 								id="my-side-nav"
-								class="scrollbar"
 								>
 								<SideNavItem userView
 									user={{
@@ -124,7 +123,7 @@ class Dashboard extends Component {
 								/>
 								<Collapsible id="popup-collapse">
 									<CollapsibleItem header="Friends" >
-										<PopFriendSpace friends={this.props.friends}>
+										<PopFriendSpace uID={this.props.uID} friends={this.props.friends}>
 										</PopFriendSpace>
 									</CollapsibleItem>
 								</Collapsible>

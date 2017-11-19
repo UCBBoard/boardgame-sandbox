@@ -11,7 +11,6 @@ import {Collapsible, CollapsibleItem} from "react-materialize";
 class PopFriendSpace extends Component {
   conditional = props => {
     let friends = this.props.friends.map((element, i) => {
-            console.log(element);
             return <CollapsibleItem
               header={element.name}
               key={"fc" + element._id + i}>
