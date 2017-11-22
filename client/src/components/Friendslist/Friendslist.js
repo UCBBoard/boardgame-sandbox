@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Friendslist.css";
 // import firebase from "firebase";
 import Axios from "axios";
+import { toast } from 'react-toastify';
 import {Button, Input, Row, Col} from "react-materialize";
 import FriendProfile from "../FriendProfile";
 
@@ -14,26 +15,9 @@ class Friendslist extends Component {
 		query: ''
 	}
 
-	// showMyFriends = () => {
-	// 	let activeUser = this.props.uID;
-	// 	console.log("finding my friends");
-	// 	console.log("finding friends of " + this.props.uID);
-	// 	Axios.get(`api/user/${activeUser}/friends`)
-	// 		.then(res => {
-	// 			console.log(res.data);
-	// 			this.setState({friends: res.data.friends, friendsView: 'mine'})
-	// 		}).catch(function(error) {
-	// 			console.log("error in showMyFriends");
-	// 			console.error(error)
-	// 		})
-	// }
-
-	// componentDidMount() {
-	// 	this.showMyFriends();
-	// }
-
 	findAFriend = (event) => {
 		event.preventDefault();
+		if(this.state.query !== ""){
 			Axios.get("/api/user/search/" + this.state.query)
 				.then(res => {
 					this.setState({
@@ -44,6 +28,9 @@ class Friendslist extends Component {
 				}).catch(err => {
 					console.log(err)
 				})
+		} else {
+			toast("Enter name to search");
+		}
 	}
 
 	showAllFriends = () => {
@@ -89,9 +76,6 @@ class Friendslist extends Component {
 
 	  		<Row>
 	  			<Col s={3}>
-	  				<Button className="friend-button" onClick={this.showMyFriends}>My Friends</Button>
-	  			</Col>
-	  			<Col s={3}>
 		  			<Button className="friend-button" onClick={this.showAllFriends}>All users</Button>
 		  		</Col>
 		  		<form>
@@ -101,6 +85,7 @@ class Friendslist extends Component {
 			  		<Col s={3}>
 			  			<Button className="friend-button" type="submit" onClick={this.findAFriend}>Find</Button>
 			  		</Col>
+
 		  		</form>
 	  		</Row>
 

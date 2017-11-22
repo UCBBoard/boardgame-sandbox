@@ -10,11 +10,12 @@ import LevelBar from "../LevelBar";
 import UserProfile from "../UserProfile";
 import UserProfileThumb from "../UserProfileThumb";
 import Friendspace from "../FriendSpace";
+import PopFriendSpace from "../PopFriendSpace";
 import GroupSpace from "../GroupSpace";
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ToastContainer, toast } from 'react-toastify';
 import scrollToComponent from 'react-scroll-to-component';
-import {SideNav, SideNavItem, Button} from 'react-materialize';
+import {SideNav, SideNavItem, Button, Collapsible, CollapsibleItem} from 'react-materialize';
 import openSocket from 'socket.io-client';
 const socket = openSocket();
 
@@ -51,6 +52,10 @@ class Dashboard extends Component {
 	// 		})
 	// }
 
+	componentWillMount(){
+		document.body.id = "db-scroll";
+	}
+
 	getLvl = () => {
 		this.props.updateLvl(this.props.uID);
 	}
@@ -64,6 +69,7 @@ class Dashboard extends Component {
 		const elem = document.querySelector(".modal-overlay")
 		if(elem) elem.remove();
 		this.getNotifications();
+		this.setState({...this.props})
 		// this.getFriends();
 		socket.on(this.props.uID, thingToUpdate => {
 			if (thingToUpdate === "notifications"){
@@ -102,8 +108,9 @@ class Dashboard extends Component {
 			  </div>
 		      <div className="container dashContainer">
 							<div className="row dashRow">
-								<Gamelist uID={this.props.uID} notification={this.notify} increaseExp={this.props.increaseExp} />
+								<Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
 							</div>
+
 							<Button data-activates={'my-side-nav'}>test button</Button>
 							<SideNav
 								trigger={<button id="">needs a trigger</button>}
@@ -115,12 +122,16 @@ class Dashboard extends Component {
 										background:this.props.cardGraphic
 									}}
 								/>
-								<SideNavItem id="friend-nav-btn">{this.props.userName}</SideNavItem>
-								<SideNavItem href='#!icon'>Friends</SideNavItem>
-								<SideNavItem divider />
-								<SideNavItem href='#!second'>Groups</SideNavItem>
-								<SideNavItem divider />
+								<Collapsible id="popup-collapse">
+									<CollapsibleItem header="Friends" >
+										<PopFriendSpace uID={this.props.uID} friends={this.state.friends}>
+										</PopFriendSpace>
+									</CollapsibleItem>
+								</Collapsible>
+								{/* <SideNavItem divider />
+								<SideNavItem href='#!second'>Groups</SideNavItem> */}
 							</SideNav>
+
 							<div className="row dashRow">
 								<GroupSpace
 									uID={this.props.uID}

@@ -71,26 +71,138 @@
   top:0;
 }
 
-.background {
-  height: 245px;
+.side-nav .user-view .background, .side-nav .userView .background {
+  height: 225px;
+  border: 1px #2e2e3c solid;
 }
 
 .background img {
   width: 300px;
+  height: 420px;
+  /*margin-left: -3px;*/
+  margin-top: -13px;
 }
 
-#friend-nav-btn {
-  margin-top: 220px;
+#popup-collapse {
+  margin-top: 191px;
+}
+
+#my-side-nav {
+  background-color: #2e2e3c;
 }
 
 #my-side-nav li {
   border: none;
 }
+
+.userView {
+  height: 32px;
+}
+
+.scrollbar {
+    background-color: #F5F5F5;
+    float: left;
+    height: 300px;
+    margin-bottom: 25px;
+    margin-left: 22px;
+    margin-top: 40px;
+    width: 65px;
+    overflow-y: scroll;
+}
+
+#my-side-nav::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+  float: right;
+}
+#my-side-nav::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+#my-side-nav::-webkit-scrollbar-thumb {
+  background-color: #F90; 
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .2) 50%,
+    rgba(255, 255, 255, .2) 75%,
+    transparent 75%,
+    transparent)
+}
+
+#db-scroll::-webkit-scrollbar {
+  width: 10px;
+  background-color: #F5F5F5;
+  float: right;
+}
+#db-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+#db-scroll::-webkit-scrollbar-thumb {
+  background-color: #F90; 
+  background-image: -webkit-linear-gradient(45deg,rgba(255, 255, 255, .2) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, .2) 50%,
+    rgba(255, 255, 255, .2) 75%,
+    transparent 75%,
+    transparent)
+}
+
+
+/* Bounce To Right (Ian Lunn, Hover.css)*/
+#my-side-nav .collapsible-header {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  /*box-shadow: 0 0 1px transparent;*/
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+#my-side-nav .collapsible-header:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ef6c00;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-duration: 1.0s;
+  transition-duration: 1.0s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+#my-side-nav .collapsible-header:hover, .collapsible-header:focus, .collapsible-header:active {
+  color: white;
+  background-color: #515664;
+}
+#my-side-nav .collapsible-header:hover:before, .collapsible-header:focus:before, .collapsible-header:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
 @media screen and (max-width: 600px){
   .logoH1Dash {
     font-size: 60px;
   }
-  
+
   .mainContainer{
     width:80%;
   }
