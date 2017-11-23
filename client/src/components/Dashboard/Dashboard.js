@@ -20,143 +20,143 @@ import openSocket from 'socket.io-client';
 const socket = openSocket();
 
 class Dashboard extends Component {
-	state = {
-		// state will be passed into hoverbuttons component as prop to render correct material-icon based on if user has notifications
-		notifications:[],
-		friends: [],
-		groups: [],
-		cardNum: 0
-	}
+  state = {
+    // state will be passed into hoverbuttons component as prop to render correct material-icon based on if user has notifications
+    notifications:[],
+    friends: [],
+    groups: [],
+    cardNum: 0
+  }
 
-	// cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
+  // cardGraphic = [goblin, ctrice, robo, rat, gnome, archer, undead, naga, medusa, bear];
 
-	getNotifications = () => {
-		console.log(this.props.uID);
-		Axios.get(`api/user/${this.props.uID}/notifications`)
-			.then(res => {
-				this.setState({notifications: res.data})
-			}).catch(error => {
-				console.error(error);
-			})
-	}
+  getNotifications = () => {
+    console.log(this.props.uID);
+    Axios.get(`api/user/${this.props.uID}/notifications`)
+      .then(res => {
+        this.setState({notifications: res.data})
+      }).catch(error => {
+        console.error(error);
+      })
+  }
 
-	// getFriends = () => {
-	// 	Axios.get(`api/user/${this.props.uID}/friends`)
-	// 		.then(res => {
-	// 			this.setState({
-	// 				friends: res.data.friends,
-	// 				groups: res.data.groups
-	// 			})
-	// 		}).catch(error => {
-	// 			console.error(error);
-	// 		})
-	// }
+  // getFriends = () => {
+  //  Axios.get(`api/user/${this.props.uID}/friends`)
+  //    .then(res => {
+  //      this.setState({
+  //        friends: res.data.friends,
+  //        groups: res.data.groups
+  //      })
+  //    }).catch(error => {
+  //      console.error(error);
+  //    })
+  // }
 
-	componentWillMount(){
-		document.body.id = "db-scroll";
-	}
+  componentWillMount(){
+    document.body.id = "db-scroll";
+  }
 
-	getLvl = () => {
-		this.props.updateLvl(this.props.uID);
-	}
+  getLvl = () => {
+    this.props.updateLvl(this.props.uID);
+  }
 
-	scrollToUserProfile = () => {
-		scrollToComponent(this.UserProfile, { offset: 0, align: 'top', duration: 1500})
-	}
+  scrollToUserProfile = () => {
+    scrollToComponent(this.UserProfile, { offset: 0, align: 'top', duration: 1500})
+  }
 
-	componentDidMount() {
-		//if modal exists from splash page login screen, remove it
-		const elem = document.querySelector(".modal-overlay")
-		if(elem) elem.remove();
-		this.getNotifications();
-		this.setState({...this.props})
-		// this.getFriends();
-		socket.on(this.props.uID, thingToUpdate => {
-			if (thingToUpdate === "notifications"){
-				this.getNotifications();
-				this.notify("New notification!");
-			}
+  componentDidMount() {
+    //if modal exists from splash page login screen, remove it
+    const elem = document.querySelector(".modal-overlay")
+    if(elem) elem.remove();
+    this.getNotifications();
+    this.setState({...this.props})
+    // this.getFriends();
+    socket.on(this.props.uID, thingToUpdate => {
+      if (thingToUpdate === "notifications"){
+        this.getNotifications();
+        this.notify("New notification!");
+      }
 
-			if (thingToUpdate === "friends"){
-				this.getNotifications();
-				this.getFriends();
-				this.notify("New friend added! How nice! +50xp");
-				this.props.increaseExp(50);
-			}
+      if (thingToUpdate === "friends"){
+        this.getNotifications();
+        this.getFriends();
+        this.notify("New friend added! How nice! +50xp");
+        this.props.increaseExp(50);
+      }
 
-			if (thingToUpdate === "exp"){
-				this.getLvl();
-			}
-		})
-	};
+      if (thingToUpdate === "exp"){
+        this.getLvl();
+      }
+    })
+  };
 
-	// openNav() {
-	// 	sideNav('show');
-	// }
+  // openNav() {
+  //  sideNav('show');
+  // }
 
 
-	notify = text => toast(text);
+  notify = text => toast(text);
 
-	render (props) {
-		return (
-			 <Background backgroundName="dash-background">
-			  <div className="center mainContainer">
-					<div className="loggedIn col s6 right">Logged in as {this.props.userName}
-						<UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
-					</div>
-			  	<img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
-			  </div>
-		      <div className="container dashContainer">
-							<div className="row dashRow">
-								<Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
-							</div>
+  render (props) {
+    return (
+       <Background backgroundName="dash-background">
+        <div className="center mainContainer">
+          <div className="loggedIn col s6 right">Logged in as {this.props.userName}
+            <UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
+          </div>
+          <img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
+        </div>
+      <div className="container dashContainer">
+              <div className="row dashRow">
+                <Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
+              </div>
 
-							<Button data-activates={'my-side-nav'}>test button</Button>
-							<SideNav
-								trigger={<button id="">needs a trigger</button>}
-								options={{ closeOnClick: false }}
-								id="my-side-nav"
-								>
-								<SideNavItem userView
-									user={{
-										background:this.props.cardGraphic
-									}}
-								/>
-								<Collapsible id="popup-collapse">
-									<CollapsibleItem header="Friends" >
-										<PopFriendSpace uID={this.props.uID} friends={this.state.friends}>
-										</PopFriendSpace>
-									</CollapsibleItem>
-								</Collapsible>
-								{/* <SideNavItem divider />
-								<SideNavItem href='#!second'>Groups</SideNavItem> */}
-							</SideNav>
+              <Button data-activates={'my-side-nav'}>test button</Button>
+              <SideNav
+                trigger={<button id="">needs a trigger</button>}
+                options={{ closeOnClick: false }}
+                id="my-side-nav"
+                >
+                <SideNavItem userView
+                  user={{
+                    background:this.props.cardGraphic
+                  }}
+                />
+                <Collapsible id="popup-collapse">
+                  <CollapsibleItem header="Friends" >
+                    <PopFriendSpace uID={this.props.uID} friends={this.state.friends}>
+                    </PopFriendSpace>
+                  </CollapsibleItem>
+                </Collapsible>
+                {/* <SideNavItem divider />
+                <SideNavItem href='#!second'>Groups</SideNavItem> */}
+              </SideNav>
 
-							<div className="row dashRow">
-								<GroupSpace
-									uID={this.props.uID}
-									groups={this.props.groups}
-									games={this.props.games}
-								/>
-							</div>
+              <div className="row dashRow">
+                <GroupSpace
+                  uID={this.props.uID}
+                  groups={this.props.groups}
+                  games={this.props.games}
+                />
+              </div>
 
-							<div className="row dashRow">
-								<section className='UserProfile' ref={(section) => { this.UserProfile = section; }}>
-									<UserProfile cardSrc={this.props.cardGraphic}level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
-								</section>
-							</div>
+              <div className="row dashRow">
+                <section className='UserProfile' ref={(section) => { this.UserProfile = section; }}>
+                  <UserProfile cardSrc={this.props.cardGraphic}level={this.props.level} userName={this.props.userName} cardNum={this.props.cardNum}/>
+                </section>
+              </div>
 
-							<div className="row dashRow">
-								<Friendspace uID={this.props.uID} friends={this.props.friends}/>
-							</div>
+              <div className="row dashRow">
+                <Friendspace uID={this.props.uID} friends={this.props.friends}/>
+              </div>
 
-							<div className="row dashRow">
-								<Newsfeed />
-							</div>
+              <div className="row dashRow">
+                <Newsfeed />
+              </div>
 
-		      <LevelBar exp={this.props.exp} toNextLevel={this.props.toNextLevel}/>
-		      <HoverButtons uID={this.props.uID} notifications={this.state.notifications} getNotifications={this.getNotifications}/>
-		      <ToastContainer
+          <LevelBar exp={this.props.exp} toNextLevel={this.props.toNextLevel}/>
+          <HoverButtons uID={this.props.uID} notifications={this.state.notifications} getNotifications={this.getNotifications}/>
+          <ToastContainer
           position="top-right"
           type="default"
           autoClose={5000}
@@ -164,12 +164,12 @@ class Dashboard extends Component {
           newestOnTop={false}
           closeOnClick
           pauseOnHover
-        	/>
+          />
 
         </div>
-		    </Background>
-		)
-	}
+        </Background>
+    )
+  }
 }
 
 export default Dashboard;

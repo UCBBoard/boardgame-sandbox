@@ -13,8 +13,13 @@ class PopFriendSpace extends Component {
     let friends = this.props.friends.map((element, i) => {
             return <CollapsibleItem
               header={element.name}
-              key={"fc" + element._id + i}>
-              <PopFriendProfileDash friendId={element._id} onClick={() => this.gameCompare()} level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
+              id={element._id}
+              uid={this.props.uid}
+              key={"fc" + element._id + i}
+              onClick={() => this.gameCompare(element._id, this.props.uid)}
+              >
+              <PopFriendProfileDash
+                uid={this.props.uid} friendId={element._id}  level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
             </CollapsibleItem>
           })
     if (this.props.friends.length > 0){
@@ -22,8 +27,9 @@ class PopFriendSpace extends Component {
     }
   }
 
-  gameCompare(e) {
+  gameCompare(friendId, uId) {
     console.log("gameCompare");
+    console.log(`comparing friend:${friendId} with user:${uId}`);
   }
 
   render = (props) =>

@@ -351,6 +351,12 @@ const socketHelper = require("../../server.js");
 							}
 						})
 		});
+
+	//Route comparing games between user and friends. (PopFriendSpace.js)
+	router.post("/compare/:uid/:friendid", (req, res) => {
+		console.log(`comparing ${req.param.uid} and ${req.param.friendid}`);
+	})
+
 // <<<<-------------/api/groups------------>>>>
 	//Route for creating and joining a new group (Groupsace.js)
 	router.post("/groups/newgroup", (req, res) => {
