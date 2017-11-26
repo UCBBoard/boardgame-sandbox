@@ -3,6 +3,7 @@ import "./PopFriendSpace.css";
 // import noFriends from "../../assets/img/noFriends.png";
 import {Modal, Button} from "react-materialize";
 import Friendslist from "../Friendslist";
+import Axios from "axios";
 import PopFriendProfileDash from "../PopFriendProfileDash";
 import {Collapsible, CollapsibleItem} from "react-materialize";
 
@@ -14,9 +15,8 @@ class PopFriendSpace extends Component {
             return <CollapsibleItem
               header={element.name}
               id={element._id}
-              uid={this.props.uid}
               key={"fc" + element._id + i}
-              onClick={() => this.gameCompare(element._id, this.props.uid)}
+              onClick={() => this.gameCompare(element._id, this.props.uID)}
               >
               <PopFriendProfileDash
                 uid={this.props.uid} friendId={element._id}  level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
@@ -30,6 +30,9 @@ class PopFriendSpace extends Component {
   gameCompare(friendId, uId) {
     console.log("gameCompare");
     console.log(`comparing friend:${friendId} with user:${uId}`);
+    Axios.post(`api/compare/${uId}/${friendId}`)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
   }
 
   render = (props) =>

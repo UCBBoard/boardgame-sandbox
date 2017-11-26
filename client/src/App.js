@@ -57,7 +57,7 @@ class App extends Component {
 							cardGraphic: response.data.cardGraphic
 							});
 		    			console.log("searching database for user:");
-		    			console.log(response.data);
+		    			console.log(response);
 		    		})
 			} else {
 				this.setState({

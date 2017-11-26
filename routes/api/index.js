@@ -354,7 +354,21 @@ const socketHelper = require("../../server.js");
 
 	//Route comparing games between user and friends. (PopFriendSpace.js)
 	router.post("/compare/:uid/:friendid", (req, res) => {
-		console.log(`comparing ${req.param.uid} and ${req.param.friendid}`);
+		console.log(`comparing ${req.params.uid} and ${req.params.friendid}`);
+		User.find({
+			$or: [
+				{_id: req.params.uid},
+				{_id: req.params.friendid}
+			]
+		})
+		.select('games')
+		.exec((error, response) => {
+			if(!error) {
+				res.json(response);
+			} else {
+				return console.log(error);
+			}
+		})
 	})
 
 // <<<<-------------/api/groups------------>>>>
