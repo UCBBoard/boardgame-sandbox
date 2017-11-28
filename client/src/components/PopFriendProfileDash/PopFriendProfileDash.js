@@ -22,12 +22,17 @@ class PopFriendProfileDash extends Component {
 				<h5 className="friendPCardLvl">Lv.{this.props.level}</h5>
 				<div className="friendPCardDescriptionDiv valign-wrapper">
 				</div>
-				<div className="friendCompare">
-					{this.props.compareList.map((element, i) => {
-						<p className="friendCompareText">{element}</p>
-					})}
-				</div>
+
 				<img src={this.props.cardSrc} className="friendPCard" alt="friendcard"/>
+				<div className="compare-area">
+					{this.props.compareList === [] ?
+						<p>You have all the games this user does.</p> :
+						<p>This user has these games you don't:</p>
+					}
+						{this.props.compareList.map((element, i) => {
+							return <p className="friend-compare-text" key={`compare-text-${i}`}>{element}</p>
+						})}
+				</div>
 			</div>
 			)
 	}
