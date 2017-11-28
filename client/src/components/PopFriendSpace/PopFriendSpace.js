@@ -10,16 +10,25 @@ import {Collapsible, CollapsibleItem} from "react-materialize";
 
 
 class PopFriendSpace extends Component {
+  state = {
+    friendsUniqueGames: []
+  }
   conditional = props => {
     let friends = this.props.friends.map((element, i) => {
-            return <CollapsibleItem
-              header={element.name}
-              id={element._id}
-              key={"fc" + element._id + i}
-              onClick={() => this.gameCompare(element._id, this.props.uID)}
-              >
+          return <CollapsibleItem
+            header={element.name}
+            id={element._id}
+            key={"fc" + element._id + i}
+            onClick={() => this.gameCompare(element._id, this.props.uID)}
+            >
               <PopFriendProfileDash
-                uid={this.props.uid} friendId={element._id}  level={element.level} cardSrc={element.cardGraphic} cardNum={element.cardNum} />
+                uid={this.props.uid}
+                friendId={element._id}
+                level={element.level}
+                cardSrc={element.cardGraphic}
+                cardNum={element.cardNum}
+                compareList={this.state.friendsUniqueGames}
+              />
             </CollapsibleItem>
           })
     if (this.props.friends.length > 0){
@@ -28,15 +37,25 @@ class PopFriendSpace extends Component {
   }
 
   gameCompare(friendId, uId) {
+    this.setState({
+      friendsUniqueGames: []
+    })
     console.log("gameCompare");
     console.log(`comparing friend:${friendId} with user:${uId}`);
     Axios.post(`api/compare/${uId}/${friendId}`)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res.data)
+        res.data[3].map((friendGame) => {
+          return this.setState({
+            friendsUniqueGames: [...this.state.friendsUniqueGames, friendGame.title]
+          })
+        })
+      })
       .catch(err => console.log(err))
   }
 
   render = (props) =>
-  <Collapsible className="pop-friend-profile">
+  <Collapsible accordion className="pop-friend-profile">
         {this.conditional()}
         <Modal
 	        header="Friends"

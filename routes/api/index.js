@@ -361,10 +361,42 @@ const socketHelper = require("../../server.js");
 				{_id: req.params.friendid}
 			]
 		})
-		.select('games')
-		.exec((error, response) => {
+		.lean()
+		.select('games wishlist')
+		.populate('games', 'title')
+		.populate('wishlist', 'title')
+		.exec((error, doc) => {
+			// var obj = doc.toObject();
+			console.log(doc);
 			if(!error) {
-				res.json(response);
+				if (doc[0]._id === req.params.uid) {
+					var myData = doc[0]
+					var friendData = doc[1]
+					var myIndex = 0
+					var otherIndex = 1
+				} else {
+					var myData = doc[1]
+					var friendData = doc[0]
+					var myIndex = 1
+					var otherIndex = 0
+				}
+				let gamesIHaveTheyDont = [];
+				let gamesTheyHaveIDont = [];
+				for(i = 0; i < friendData.games.length; i++) {
+					if (!myData.games.includes(friendData.games[i])) {
+						gamesTheyHaveIDont.push(friendData.games[i]);
+					}
+				}
+				for(j = 0; j < myData.games.length; j++) {
+					if(!friendData.games.includes(myData.games[j])) {
+						gamesIHaveTheyDont.push(myData.games[j])
+					}
+				}
+				// console.log(`gamesIHaveTheyWant: ${gamesIHaveTheyWant} and gamesTheyHaveIWant: ${gamesTheyHaveIWant}`);
+				// doc[0].gamesIHaveTheyWant = gamesIHaveTheyWant;
+				// doc[0].gamesTheyHaveIWant = gamesTheyHaveIWant;
+				doc.push(gamesIHaveTheyDont, gamesTheyHaveIDont)
+				res.send(doc);
 			} else {
 				return console.log(error);
 			}
