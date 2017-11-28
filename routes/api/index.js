@@ -120,19 +120,15 @@ const socketHelper = require("../../server.js");
 						let gameToAdd = new Game (game)
 					//Search the Game collection to see if the game exists
 						Game.findOne({title: game.title}, function(error, result3){
-							// console.log("when adding new game, the result is " + result3);
 						// If the game already exists...
 							if (result3){
 								var key = ownedList;
 								var value = result3._id;
 								let thisList = {};
 								thisList[key] = value;
-								// console.log("<<<<<<result3>>>>>")
-								// console.log(result3);
 							//Add it to the users profile, unless it already exists.
 								User.findOneAndUpdate({ _id : userID }, {$addToSet:  thisList}).exec((error, result4) => {
 									// console.log("updating gamelist in User Profile")
-									// console.log(result4);
 								//Update EXP for user.
 									User.findOne({ _id : userID }).exec((error, result5) => {
 										let newExp = levelHelper.stripExp(result5.exp + 10, result5.toNextLevel);
@@ -351,6 +347,56 @@ const socketHelper = require("../../server.js");
 							}
 						})
 		});
+
+	//Route comparing games between user and friends. (PopFriendSpace.js)
+	router.post("/compare/:uid/:friendid", (req, res) => {
+		console.log(`comparing ${req.params.uid} and ${req.params.friendid}`);
+		User.find({
+			$or: [
+				{_id: req.params.uid},
+				{_id: req.params.friendid}
+			]
+		})
+		.lean()
+		.select('games wishlist')
+		.populate('games', 'title')
+		.populate('wishlist', 'title')
+		.exec((error, doc) => {
+			if(!error) {
+				if (doc[0]._id === req.params.uid) {
+					var myData = doc[0]
+					var friendData = doc[1]
+					var myIndex = 0
+					var otherIndex = 1
+				} else {
+					var myData = doc[1]
+					var friendData = doc[0]
+					var myIndex = 1
+					var otherIndex = 0
+				}
+				let gamesIHaveTheyDont = [];
+				let gamesTheyHaveIDont = [];
+				for(i = 0; i < friendData.games.length; i++) {
+					if (!myData.games.includes(friendData.games[i])) {
+						gamesTheyHaveIDont.push(friendData.games[i]);
+					}
+				}
+				for(j = 0; j < myData.games.length; j++) {
+					if(!friendData.games.includes(myData.games[j])) {
+						gamesIHaveTheyDont.push(myData.games[j])
+					}
+				}
+				// console.log(`gamesIHaveTheyWant: ${gamesIHaveTheyWant} and gamesTheyHaveIWant: ${gamesTheyHaveIWant}`);
+				// doc[0].gamesIHaveTheyWant = gamesIHaveTheyWant;
+				// doc[0].gamesTheyHaveIWant = gamesTheyHaveIWant;
+				doc.push(gamesIHaveTheyDont, gamesTheyHaveIDont)
+				res.send(doc);
+			} else {
+				return console.log(error);
+			}
+		})
+	})
+
 // <<<<-------------/api/groups------------>>>>
 	//Route for creating and joining a new group (Groupsace.js)
 	router.post("/groups/newgroup", (req, res) => {

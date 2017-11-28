@@ -3,6 +3,9 @@ import "./PopFriendProfileDash.css";
 
 class PopFriendProfileDash extends Component {
 	determineCard = cardNum => {
+		// let gameCompareList = this.props.compareList.map((element) => {
+		// 	<p>{element}</p>
+		// })
 		// let cardFlavourText = ["Reviled by most forest dwellers that come upon them, the Goblin nonetheless has a keen propensity for survival.",
 		// "That's no chicken...",
 		// '"Does not compute."',
@@ -19,7 +22,17 @@ class PopFriendProfileDash extends Component {
 				<h5 className="friendPCardLvl">Lv.{this.props.level}</h5>
 				<div className="friendPCardDescriptionDiv valign-wrapper">
 				</div>
+
 				<img src={this.props.cardSrc} className="friendPCard" alt="friendcard"/>
+				<div className="compare-area">
+					{this.props.compareList === [] ?
+						<p>You have all the games this user does.</p> :
+						<p>This user has these games you don't:</p>
+					}
+						{this.props.compareList.map((element, i) => {
+							return <p className="friend-compare-text" key={`compare-text-${i}`}>{element}</p>
+						})}
+				</div>
 			</div>
 			)
 	}
