@@ -40,11 +40,8 @@ class PopFriendSpace extends Component {
     this.setState({
       friendsUniqueGames: []
     })
-    console.log("gameCompare");
-    console.log(`comparing friend:${friendId} with user:${uId}`);
     Axios.post(`api/compare/${uId}/${friendId}`)
       .then(res => {
-        console.log(res.data)
         res.data[3].map((friendGame) => {
           return this.setState({
             friendsUniqueGames: [...this.state.friendsUniqueGames, friendGame.title]

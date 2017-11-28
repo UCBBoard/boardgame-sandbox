@@ -120,19 +120,15 @@ const socketHelper = require("../../server.js");
 						let gameToAdd = new Game (game)
 					//Search the Game collection to see if the game exists
 						Game.findOne({title: game.title}, function(error, result3){
-							// console.log("when adding new game, the result is " + result3);
 						// If the game already exists...
 							if (result3){
 								var key = ownedList;
 								var value = result3._id;
 								let thisList = {};
 								thisList[key] = value;
-								// console.log("<<<<<<result3>>>>>")
-								// console.log(result3);
 							//Add it to the users profile, unless it already exists.
 								User.findOneAndUpdate({ _id : userID }, {$addToSet:  thisList}).exec((error, result4) => {
 									// console.log("updating gamelist in User Profile")
-									// console.log(result4);
 								//Update EXP for user.
 									User.findOne({ _id : userID }).exec((error, result5) => {
 										let newExp = levelHelper.stripExp(result5.exp + 10, result5.toNextLevel);
@@ -366,8 +362,6 @@ const socketHelper = require("../../server.js");
 		.populate('games', 'title')
 		.populate('wishlist', 'title')
 		.exec((error, doc) => {
-			// var obj = doc.toObject();
-			console.log(doc);
 			if(!error) {
 				if (doc[0]._id === req.params.uid) {
 					var myData = doc[0]
