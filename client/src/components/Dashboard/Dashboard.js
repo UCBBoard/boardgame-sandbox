@@ -101,6 +101,11 @@ class Dashboard extends Component {
     return (
        <Background backgroundName="dash-background">
        <Header exp={this.props.exp} toNextLevel={this.props.toNextLevel} />
+        <div className="center mainContainer">
+          <div className="loggedIn col s6 right">Logged in as {this.props.userName}
+            <UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
+          </div>
+        </div>
       <div className="container dashContainer">
               <div className="row dashRow">
                 <Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
