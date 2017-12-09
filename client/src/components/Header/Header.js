@@ -1,5 +1,5 @@
 import React, { Component  } from 'react';
-import {Navbar, NavItem, Icon} from "react-materialize";
+import {Navbar, NavItem, Icon, Button} from "react-materialize";
 import "./Header.css";
 import Axios from "axios";
 import logo from "../../assets/img/logo.png"
@@ -17,7 +17,7 @@ class Header extends Component {
 			<div className="headerLogo">
 				<img src={logo} className="siteLogoHeader" alt="logo" /><h1 className="logoH1Header">GameVault</h1>
 			</div>
-			<Icon small>settings</Icon>
+			<Button small data-activates={'my-side-nav'} className={"settingsButton"}><Icon small className={"settingsIcon"}>settings</Icon></Button>
 		</Navbar>
 		)
 	}
