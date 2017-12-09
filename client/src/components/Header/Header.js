@@ -17,6 +17,7 @@ class Header extends Component {
 			<div className="headerLogo">
 				<img src={logo} className="siteLogoHeader" alt="logo" /><h1 className="logoH1Header">GameVault</h1>
 			</div>
+			<Icon small>settings</Icon>
 		</Navbar>
 		)
 	}

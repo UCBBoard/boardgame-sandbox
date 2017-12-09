@@ -100,12 +100,7 @@ class Dashboard extends Component {
   render (props) {
     return (
        <Background backgroundName="dash-background">
-        <div className="center mainContainer">
-          <div className="loggedIn col s6 right">Logged in as {this.props.userName}
-            <UserProfileThumb cardSrc={this.props.cardGraphic} cardNum={this.props.cardNum} scroll={this.scrollToUserProfile}/>
-          </div>
-          <img src={logo} className="siteLogoDash" alt="logo" /><h1 className="logoH1Dash">GameVault</h1>
-        </div>
+       <Header exp={this.props.exp} toNextLevel={this.props.toNextLevel} />
       <div className="container dashContainer">
               <div className="row dashRow">
                 <Gamelist games={this.state.games} uID={this.props.uID} notification={this.notify} setAppState={this.props.setAppState} increaseExp={this.props.increaseExp} />
@@ -154,10 +149,8 @@ class Dashboard extends Component {
                 <Newsfeed />
               </div>
 
-          <LevelBar exp={this.props.exp} toNextLevel={this.props.toNextLevel}/>
           <HoverButtons uID={this.props.uID} notifications={this.state.notifications} getNotifications={this.getNotifications}/>
           <ToastContainer
->>>>>>> upstream/master
           position="top-right"
           type="default"
           autoClose={5000}

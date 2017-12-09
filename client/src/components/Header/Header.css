@@ -1,5 +1,5 @@
 .headerLogo {
-    margin: auto;
+    margin: -110px auto 0;
     width: 275px;
 }
 
@@ -7,10 +7,10 @@
     font-family: 'Wendy One', sans-serif;
     text-decoration: none;
     padding: 0;
-    margin: -15px 0 0;
     font-size: 40px;
     text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.56);
     display: inline-block;
+    vertical-align: text-bottom;
 }
 
 nav {
@@ -18,8 +18,13 @@ nav {
     position: fixed;
 }
 
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+    top: -14px;
+}
+
 .siteLogoHeader {
     width: 50px;
-    margin-top: 40px;
-    vertical-align: bottom;
+    margin-top: 28px;
 }
