@@ -1,0 +1,28 @@
+.friendPCardLvl {
+    float: right;
+    font-family: "arial";
+    position: relative;
+    /*right: -115px;*/
+    /*top: -56px;*/
+    font-size: 20px;
+    z-index: 1;
+    color: black;
+}
+
+.friendPCardTextDiv {
+    padding: 5px;
+    padding-right: 10px;
+    background-color: #a9a9d9;
+    width: 275px;
+    margin-left: 25px;
+}
+
+.friendPCard {
+ width: 100px;  
+}
+
+.compare-area {
+    width: 255px;
+    line-height: 15px;
+}
+

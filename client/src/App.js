@@ -16,7 +16,11 @@ class App extends Component {
 		exp: 1,
 		toNextLevel: 100,
 		cardNum: 0,
-		groups: []
+	}
+
+	setAppState = (key, val) => {
+		let obj = key.val
+		this.setState({obj})
 	}
 
 	increaseExp = expToAdd => {
@@ -34,7 +38,8 @@ class App extends Component {
 		this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
 			if (user) {
 				let userName = user.email.split("@")[0]
-				console.log(userName)
+				console.log(userName);
+				//This route is called ~368 in routea/api/index.js
 				Axios.post("/api/user/" + user.uid + "/" + userName + "/" + user.email)
 						.then((response) => {
 							this.setState({
@@ -52,19 +57,8 @@ class App extends Component {
 							cardGraphic: response.data.cardGraphic
 							});
 		    			console.log("searching database for user:");
-		    			console.log(response.data);
+		    			console.log(response);
 		    		})
-				// Axios.post(`/api/user/${user.uid}/${userName}`)
-				// .then((response, error) => {
-				// 	this.setState({
-				// 		level: response.data.level,
-				// 		UID: user.uid,
-				// 		userName: userName,
-				// 		authed: true,
-				// 		loading: false,
-				// 	});
-				// 	console.log("searching database for user:" + response);
-				// })
 			} else {
 				this.setState({
 					authed: false,
@@ -94,6 +88,7 @@ class App extends Component {
 					games = {this.state.games}
 					friends = {this.state.friends}
 					cardGraphic = {this.state.cardGraphic}
+					set AppState = {this.setAppState}
 					/> : <Splash/>}
 				</div>
 			</BrowserRouter>
